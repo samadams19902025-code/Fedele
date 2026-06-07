@@ -83,7 +83,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;lett
 .hero__media{position:relative;}
 .hero__card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.4rem;
   box-shadow:var(--shadow);}
-.hero__card img{border-radius:12px;aspect-ratio:4/5;object-fit:contain;background:#fff;width:100%;}
+.hero__card img,.hero__card video{border-radius:12px;aspect-ratio:4/5;object-fit:cover;background:#fff;width:100%;display:block;}
 .hero__seal{position:absolute;left:-18px;bottom:24px;width:96px;height:96px;border-radius:50%;
   background:var(--oliva);color:var(--cream-2);display:flex;flex-direction:column;align-items:center;
   justify-content:center;font-family:var(--serif);box-shadow:var(--shadow);border:2px solid var(--grano-soft);}
@@ -201,7 +201,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;lett
     </div>
     <div class="hero__media">
       <div class="hero__card">
-        <img src="assets/nduja.png" alt="N'duja di Spilinga Azienda Fedele" loading="eager">
+        <video src="assets/nduja-hero.mp4" poster="assets/nduja.png" autoplay muted loop playsinline preload="metadata" aria-label="N'duja di Spilinga Azienda Fedele"></video>
       </div>
       <div class="hero__seal"><span>1956</span><span>dal</span></div>
     </div>
