@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Azienda Fedele — Prodotti tipici calabresi spediti in tutta Italia · dal 1956</title>
+<meta name="description" content="Friselle, pasta artigianale, dolci e n'duja della tradizione calabrese. Grano 100% italiano, di famiglia dal 1956. Spedizione in tutta Italia, pagamenti sicuri." />
+<meta name="theme-color" content="#B23A22" />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Azienda Fedele — il meglio della Calabria, a casa tua" />
+<meta property="og:description" content="Prodotti tipici calabresi artigianali, grano 100% italiano. Spediti in tutta Italia. Dal 1956." />
+<meta property="og:locale" content="it_IT" />
+<!-- TODO: verify · aggiungere og:image quando disponibile una foto reale -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Azienda Fedele — il meglio della Calabria, a casa tua" />
+<meta name="twitter:description" content="Prodotti tipici calabresi artigianali, grano 100% italiano. Spediti in tutta Italia. Dal 1956." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --cream:#F5EDDD;
+  --cream-2:#FBF6EC;
+  --paper:#FFFDF8;
+  --terracotta:#B23A22;
+  --terracotta-dark:#8C2B16;
+  --peperoncino:#C8412A;
+  --grano:#C2912F;
+  --grano-soft:#E6CB86;
+  --oliva:#5C6A39;
+  --oliva-dark:#454F29;
+  --brown:#372518;
+  --brown-soft:#6E5848;
+  --brown-faint:#9A8674;
+  --line:rgba(55,37,24,.14);
+  --line-strong:rgba(55,37,24,.28);
+  --shadow-sm:0 1px 2px rgba(55,37,24,.06), 0 2px 8px rgba(55,37,24,.05);
+  --shadow-md:0 6px 24px rgba(55,37,24,.12);
+  --shadow-lg:0 18px 50px rgba(55,37,24,.22);
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --display:"Cormorant Garamond", Georgia, serif;
+  --sans:"Jost", system-ui, -apple-system, sans-serif;
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-pill:999px;
+  --maxw:1200px;
+  --header-h:72px; --promo-h:44px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:140px;}
+body{
+  margin:0; font-family:var(--sans); color:var(--brown);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  line-height:1.55;
+}
+body.no-scroll{overflow:hidden;}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:600; line-height:1.1; margin:0; color:var(--brown);}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+:focus-visible{outline:2.5px solid var(--terracotta); outline-offset:2px; border-radius:4px;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.eyebrow{font-family:var(--sans); font-weight:600; font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--terracotta);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+
+/* ============ PROMO BAR ============ */
+.promo{
+  background:var(--oliva-dark); color:#FBF6EC;
+  font-size:.86rem; position:relative; z-index:60;
+}
+.promo__in{display:flex; align-items:center; justify-content:center; gap:16px; min-height:var(--promo-h); padding:7px 48px 7px 16px; text-align:center; flex-wrap:wrap;}
+.promo b{color:var(--grano-soft); font-weight:700;}
+.promo code{font-family:var(--sans); font-weight:700; background:rgba(255,255,255,.14); padding:1px 8px; border-radius:6px; letter-spacing:.04em;}
+.promo a.promo__cta{font-weight:600; text-decoration:underline; text-underline-offset:3px; white-space:nowrap;}
+.promo__close{position:absolute; right:10px; top:50%; transform:translateY(-50%); width:30px;height:30px; border-radius:50%; display:grid; place-items:center; color:#FBF6EC; opacity:.8;}
+.promo__close:hover{opacity:1; background:rgba(255,255,255,.12);}
+body.promo-hidden .promo{display:none;}
+
+/* ============ HEADER ============ */
+.header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(245,237,221,.86); backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header__in{display:flex; align-items:center; gap:24px; min-height:var(--header-h);}
+.brand{display:flex; flex-direction:column; line-height:1; margin-right:auto;}
+.brand__name{font-family:var(--display); font-size:1.6rem; letter-spacing:.02em; color:var(--brown);}
+.brand__name b{color:var(--terracotta); font-weight:400;}
+.brand__tag{font-family:var(--sans); font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--brown-soft); margin-top:3px;}
+.nav{display:flex; gap:28px;}
+.nav a{font-size:.92rem; font-weight:500; color:var(--brown); position:relative; padding:4px 0;}
+.nav a::after{content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--terracotta); transition:right .25s ease;}
+.nav a:hover::after{right:0;}
+.header__actions{display:flex; align-items:center; gap:12px;}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  font-family:var(--sans); font-weight:600; font-size:.95rem;
+  padding:12px 22px; border-radius:var(--r-pill); transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+}
+.btn--primary{background:var(--terracotta); color:#fff; box-shadow:var(--shadow-sm);}
+.btn--primary:hover{background:var(--terracotta-dark); transform:translateY(-1px); box-shadow:var(--shadow-md);}
+.btn--ghost{background:transparent; color:var(--brown); border:1.5px solid var(--line-strong);}
+.btn--ghost:hover{border-color:var(--brown); background:rgba(55,37,24,.04);}
+.btn--lg{padding:16px 30px; font-size:1.02rem;}
+.btn--block{width:100%;}
+.cart-btn{position:relative; width:48px; height:48px; border-radius:50%; display:grid; place-items:center; border:1.5px solid var(--line-strong); background:var(--paper); transition:border-color .2s, background .2s;}
+.cart-btn:hover{border-color:var(--brown);}
+.cart-btn svg{width:22px;height:22px;}
+.cart-count{
+  position:absolute; top:-4px; right:-4px; min-width:21px; height:21px; padding:0 5px;
+  background:var(--terracotta); color:#fff; border-radius:var(--r-pill);
+  font-size:.72rem; font-weight:700; display:grid; place-items:center; border:2px solid var(--cream);
+  transform:scale(0); transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+}
+.cart-count.show{transform:scale(1);}
+.hamburger{display:none; width:46px;height:46px; border-radius:10px; border:1.5px solid var(--line-strong); place-items:center; background:var(--paper);}
+.hamburger svg{width:24px;height:24px;}
+
+/* ============ HERO ============ */
+.hero{position:relative; overflow:hidden; background:
+   radial-gradient(120% 90% at 85% 0%, rgba(194,145,47,.16), transparent 55%),
+   radial-gradient(90% 80% at 0% 100%, rgba(92,106,57,.14), transparent 60%),
+   var(--cream);
+}
+.hero__in{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; padding:72px 24px 80px;}
+.hero__eyebrow{display:inline-flex; align-items:center; gap:10px; margin-bottom:22px;}
+.hero__eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--grano);}
+.hero h1{font-size:clamp(2.6rem, 5.2vw, 4.3rem); letter-spacing:-.01em; color:var(--brown);}
+.hero h1 em{font-style:italic; color:var(--terracotta);}
+.hero__sub{font-size:1.18rem; color:var(--brown-soft); margin-top:22px; max-width:30ch;}
+.hero__cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+.hero__micro{margin-top:18px; font-size:.86rem; color:var(--brown-faint); display:flex; align-items:center; gap:8px;}
+.hero__micro .spark{color:var(--grano);}
+.hero__facts{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:36px; padding-top:26px; border-top:1px solid var(--line); font-size:.9rem; font-weight:500; color:var(--brown);}
+.hero__facts span{display:inline-flex; align-items:center; gap:8px;}
+.hero__facts svg{width:17px;height:17px; color:var(--oliva);}
+.hero__art{position:relative; aspect-ratio:4/5; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-lg);}
+.hero__seal{
+  position:absolute; bottom:18px; left:18px; z-index:2;
+  background:var(--paper); border-radius:var(--r-pill); padding:10px 18px 10px 12px;
+  display:flex; align-items:center; gap:11px; box-shadow:var(--shadow-md);
+}
+.hero__seal .yr{font-family:var(--display); font-size:1.5rem; color:var(--terracotta); line-height:1;}
+.hero__seal small{font-size:.72rem; color:var(--brown-soft); line-height:1.2; display:block;}
+
+/* ============ PLACEHOLDER IMAGES ============ */
+.ph{position:relative; width:100%; height:100%; display:grid; place-items:center; overflow:hidden; background:var(--cream-2);}
+.ph::before{content:""; position:absolute; inset:0; opacity:.5;
+  background-image:radial-gradient(currentColor 1px, transparent 1.4px); background-size:13px 13px;}
+.ph__mono{font-family:var(--display); font-size:3.4rem; color:currentColor; opacity:.5; z-index:1; text-align:center; line-height:1; padding:10px;}
+.ph__tag{position:absolute; top:10px; left:10px; z-index:2; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600; background:rgba(255,253,248,.78); color:var(--brown-soft); padding:4px 9px; border-radius:var(--r-pill);}
+.ph--friselle{color:var(--grano); background:linear-gradient(150deg,#F1E2BE,#E8D49E);}
+.ph--pasta{color:var(--oliva); background:linear-gradient(150deg,#E6E7CE,#D8DCB6);}
+.ph--dolci{color:var(--terracotta); background:linear-gradient(150deg,#F2DDC8,#EBCBAE);}
+.ph--specialita{color:var(--peperoncino); background:linear-gradient(150deg,#F1CFC3,#E7B3A2);}
+.ph--hero{color:var(--terracotta); background:linear-gradient(150deg,#EBCBA8,#DDA77E);}
+.ph--hero .ph__mono{font-size:5rem;}
+
+/* ============ TRUST STRIP ============ */
+.trust{background:var(--brown); color:var(--cream);}
+.trust__in{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; padding:0;}
+.trust__item{display:flex; align-items:center; justify-content:center; gap:11px; padding:20px 16px; text-align:center; font-weight:500; font-size:.95rem;}
+.trust__item + .trust__item{border-left:1px solid rgba(255,255,255,.12);}
+.trust__item svg{width:22px;height:22px; color:var(--grano-soft); flex:none;}
+
+/* ============ SECTION SHELL ============ */
+.section{padding:84px 0;}
+.section__head{max-width:62ch; margin-bottom:40px;}
+.section__head h2{font-size:clamp(2rem,3.6vw,2.9rem); margin-top:12px; letter-spacing:-.01em;}
+.section__head p{color:var(--brown-soft); font-size:1.08rem; margin-top:14px;}
+
+/* ============ CATALOG ============ */
+.catnav{position:sticky; top:var(--header-h); z-index:30; background:var(--cream); border-bottom:1px solid var(--line);}
+.catnav__in{display:flex; gap:10px; padding:14px 24px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.catnav__in::-webkit-scrollbar{display:none;}
+.catnav a{flex:none; font-size:.9rem; font-weight:600; padding:9px 18px; border-radius:var(--r-pill); border:1.5px solid var(--line-strong); color:var(--brown); transition:all .2s; white-space:nowrap;}
+.catnav a:hover{border-color:var(--terracotta); color:var(--terracotta);}
+
+.catblock{padding-top:64px; margin-top:-12px;}
+.catblock__head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:28px; flex-wrap:wrap;}
+.catblock__head h3{font-size:1.9rem;}
+.catblock__head .count{font-size:.86rem; color:var(--brown-faint); font-weight:500;}
+.catblock__note{font-size:.92rem; color:var(--oliva-dark); font-weight:500;}
+
+.grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .25s ease;}
+.card:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
+.card__media{position:relative; aspect-ratio:1/1;}
+.prod-img{width:100%;height:100%;object-fit:contain;background:#fbf7f0;display:block;}
+.card__badge{position:absolute; top:10px; right:10px; z-index:3; background:var(--terracotta); color:#fff; font-size:.66rem; font-weight:700; letter-spacing:.1em; padding:5px 11px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
+.card__body{padding:18px 18px 20px; display:flex; flex-direction:column; flex:1;}
+.card__name{font-size:1.18rem; line-height:1.2;}
+.card__meta{font-size:.78rem; font-weight:600; letter-spacing:.04em; color:var(--grano); text-transform:uppercase; margin-top:6px;}
+.card__desc{font-size:.9rem; color:var(--brown-soft); margin-top:9px; flex:1; text-wrap:pretty;}
+.card__foot{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px;}
+.card__price{font-family:var(--serif); font-size:1.42rem; font-weight:600; color:var(--brown);}
+.card__price .ind{font-size:.62rem; font-family:var(--sans); color:var(--brown-faint); font-weight:600; vertical-align:super; margin-left:2px;}
+.qtyrow{display:flex; align-items:center; gap:10px; margin-top:14px;}
+.stepper{display:flex; align-items:center; border:1.5px solid var(--line-strong); border-radius:var(--r-pill); overflow:hidden;}
+.stepper button{width:34px;height:38px; font-size:1.1rem; font-weight:600; color:var(--brown); display:grid; place-items:center; transition:background .15s;}
+.stepper button:hover{background:rgba(55,37,24,.06);}
+.stepper input{width:34px; text-align:center; border:none; background:none; font-family:var(--sans); font-weight:600; font-size:.95rem; color:var(--brown); -moz-appearance:textfield; padding:0;}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0;}
+.add-btn{flex:1; background:var(--oliva); color:#fff; font-weight:600; font-size:.92rem; padding:10px 14px; border-radius:var(--r-pill); display:inline-flex; align-items:center; justify-content:center; gap:8px; transition:background .2s, transform .15s;}
+.add-btn:hover{background:var(--oliva-dark); transform:translateY(-1px);}
+.add-btn svg{width:17px;height:17px;}
+.add-btn.added{background:var(--terracotta);}
+
+/* ============ STORIA ============ */
+.storia{background:var(--cream-2);}
+.storia__in{display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center;}
+.storia__art{aspect-ratio:5/6; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-md);}
+.storia__body p{color:var(--brown-soft); font-size:1.06rem; margin-top:18px;}
+.storia__body p .todo{color:var(--peperoncino); font-style:italic;}
+.storia__sign{font-family:var(--display); font-size:1.2rem; color:var(--brown); margin-top:24px;}
+.storia__sign small{display:block; font-family:var(--sans); font-size:.82rem; color:var(--brown-faint); letter-spacing:.04em; margin-top:2px;}
+
+/* ============ PERCHÉ ============ */
+.why__grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+.why__card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); padding:28px 24px; box-shadow:var(--shadow-sm);}
+.why__ic{width:46px;height:46px; border-radius:12px; display:grid; place-items:center; background:rgba(194,145,47,.14); color:var(--grano); margin-bottom:16px;}
+.why__ic svg{width:24px;height:24px;}
+.why__card h4{font-size:1.18rem; margin-bottom:8px;}
+.why__card p{font-size:.92rem; color:var(--brown-soft);}
+
+/* ============ SPEDIZIONI ============ */
+.ship{background:var(--brown); color:var(--cream);}
+.ship h2,.ship h3,.ship h4{color:var(--cream);}
+.ship .section__head p{color:rgba(245,237,221,.72);}
+.ship__steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:8px;}
+.ship__step{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:var(--r-md); padding:30px 26px;}
+.ship__num{font-family:var(--display); font-size:2.2rem; color:var(--grano-soft); line-height:1;}
+.ship__step h4{font-size:1.22rem; margin:14px 0 8px;}
+.ship__step p{font-size:.94rem; color:rgba(245,237,221,.78);}
+.ship__facts{display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;}
+.ship__chip{display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:var(--r-pill); padding:11px 18px; font-size:.92rem; font-weight:500;}
+.ship__chip svg{width:18px;height:18px; color:var(--grano-soft);}
+.ship__chip .todo{color:var(--grano-soft); font-style:italic;}
+
+/* ============ CONTATTI / FOOTER ============ */
+.contact{background:var(--oliva-dark); color:var(--cream);}
+.contact h2,.contact h3{color:var(--cream);}
+.contact__in{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+.contact__list{margin-top:26px; display:flex; flex-direction:column; gap:20px;}
+.contact__row{display:flex; gap:15px; align-items:flex-start;}
+.contact__row .ic{width:42px;height:42px;flex:none; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:var(--grano-soft);}
+.contact__row .ic svg{width:20px;height:20px;}
+.contact__row b{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(245,237,221,.6); font-weight:600; display:block; margin-bottom:3px;}
+.contact__row a,.contact__row span{font-size:1.06rem; color:var(--cream);}
+.contact__row a:hover{text-decoration:underline; text-underline-offset:3px;}
+.contact__card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:var(--r-lg); padding:34px;}
+.contact__card h3{font-size:1.5rem; margin-bottom:8px;}
+.contact__card p{color:rgba(245,237,221,.8); font-size:1rem; margin-bottom:22px;}
+.contact__social{display:flex; gap:12px; margin-top:22px;}
+.contact__social a{width:44px;height:44px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:var(--cream); transition:background .2s;}
+.contact__social a:hover{background:rgba(255,255,255,.2);}
+.contact__social svg{width:21px;height:21px;}
+
+.footer{background:#2A1B11; color:rgba(245,237,221,.66); font-size:.86rem;}
+.footer__in{display:flex; flex-wrap:wrap; gap:18px 32px; align-items:center; justify-content:space-between; padding:30px 24px;}
+.footer__legal{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center;}
+.footer a:hover{color:var(--cream); text-decoration:underline;}
+.footer .todo{color:var(--grano-soft); font-style:italic;}
+
+.todo{font-style:italic;}
+
+/* ============ CART DRAWER ============ */
+.overlay{position:fixed; inset:0; background:rgba(40,27,17,.5); backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s; z-index:90;}
+.overlay.show{opacity:1; visibility:visible;}
+.drawer{
+  position:fixed; top:0; right:0; height:100%; width:min(440px,100vw); background:var(--cream);
+  z-index:100; display:flex; flex-direction:column; transform:translateX(100%);
+  transition:transform .34s cubic-bezier(.4,0,.2,1); box-shadow:var(--shadow-lg);
+}
+.drawer.show{transform:translateX(0);}
+.drawer__head{display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid var(--line); flex:none;}
+.drawer__head h3{font-size:1.4rem;}
+.drawer__head .x{width:40px;height:40px; border-radius:50%; display:grid; place-items:center; transition:background .15s;}
+.drawer__head .x:hover{background:rgba(55,37,24,.07);}
+.drawer__head .x svg{width:22px;height:22px;}
+.drawer__body{flex:1; overflow-y:auto; padding:8px 24px;}
+.drawer__empty{text-align:center; padding:60px 20px; color:var(--brown-soft);}
+.drawer__empty .ic{width:64px;height:64px; margin:0 auto 18px; border-radius:50%; background:var(--cream-2); display:grid; place-items:center; color:var(--brown-faint);}
+.drawer__empty .ic svg{width:30px;height:30px;}
+.drawer__empty h4{font-size:1.3rem; margin-bottom:8px;}
+.line{display:grid; grid-template-columns:64px 1fr auto; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); align-items:start;}
+.line__media{width:64px;height:64px; border-radius:10px; overflow:hidden;}
+.line__media .ph__mono{font-size:1.4rem;}
+.line__media .ph::before{background-size:8px 8px;}
+.line__name{font-family:var(--serif); font-size:1.04rem; font-weight:600; line-height:1.2;}
+.line__meta{font-size:.78rem; color:var(--brown-faint); margin-top:2px;}
+.line__ctl{display:flex; align-items:center; gap:14px; margin-top:11px;}
+.line .stepper{transform:scale(.92); transform-origin:left;}
+.line__rm{font-size:.82rem; color:var(--brown-soft); display:inline-flex; align-items:center; gap:5px; transition:color .15s;}
+.line__rm:hover{color:var(--terracotta);}
+.line__rm svg{width:14px;height:14px;}
+.line__price{font-family:var(--serif); font-weight:600; font-size:1.08rem; text-align:right; white-space:nowrap;}
+.drawer__foot{flex:none; border-top:1px solid var(--line); padding:20px 24px calc(20px + env(safe-area-inset-bottom)); background:var(--cream-2);}
+.subtotal{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;}
+.subtotal .lbl{font-weight:600; font-size:1.05rem;}
+.subtotal .val{font-family:var(--serif); font-weight:700; font-size:1.6rem;}
+.drawer__ship{font-size:.84rem; color:var(--brown-soft); margin-bottom:14px;}
+.drawer__discount{display:flex; align-items:center; gap:9px; background:rgba(194,145,47,.13); border:1px dashed var(--grano); border-radius:var(--r-sm); padding:10px 13px; font-size:.85rem; color:var(--oliva-dark); margin-bottom:14px;}
+.drawer__discount svg{width:18px;height:18px; color:var(--grano); flex:none;}
+.drawer__discount code{font-weight:700; background:#fff; padding:1px 7px; border-radius:5px; color:var(--terracotta);}
+.checkout-btn{width:100%; background:var(--terracotta); color:#fff; font-weight:700; font-size:1.06rem; padding:17px; border-radius:var(--r-pill); display:flex; align-items:center; justify-content:center; gap:10px; transition:background .2s, transform .15s;}
+.checkout-btn:hover:not(:disabled){background:var(--terracotta-dark); transform:translateY(-1px);}
+.checkout-btn:disabled{opacity:.7; cursor:wait;}
+.checkout-btn svg{width:19px;height:19px;}
+.checkout-msg{font-size:.84rem; text-align:center; margin-top:10px; min-height:1.1em;}
+.checkout-msg.err{color:var(--terracotta);}
+.checkout-msg.warn{color:var(--oliva-dark);}
+.pay{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; flex-wrap:wrap;}
+.pay__secure{display:inline-flex; align-items:center; gap:6px; font-size:.8rem; font-weight:600; color:var(--oliva-dark);}
+.pay__secure svg{width:15px;height:15px;}
+.pay__icons{display:flex; gap:6px; align-items:center;}
+.pay__badge{height:26px; border:1px solid var(--line); border-radius:5px; background:#fff; padding:0 7px; display:inline-flex; align-items:center; font-size:.62rem; font-weight:700; letter-spacing:.02em; color:var(--brown);}
+.pay__badge svg{height:14px; width:auto;}
+
+/* ============ POPUP ============ */
+.popup-ov{position:fixed; inset:0; background:rgba(40,27,17,.55); backdrop-filter:blur(3px); display:grid; place-items:center; padding:24px; z-index:110; opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;}
+.popup-ov.show{opacity:1; visibility:visible;}
+.popup{background:var(--paper); border-radius:var(--r-lg); max-width:430px; width:100%; overflow:hidden; box-shadow:var(--shadow-lg); transform:translateY(16px) scale(.97); transition:transform .35s cubic-bezier(.34,1.56,.64,1); position:relative;}
+.popup-ov.show .popup{transform:translateY(0) scale(1);}
+.popup__top{background:var(--terracotta); color:#fff; padding:30px 30px 26px; text-align:center; position:relative; overflow:hidden;}
+.popup__top::after{content:""; position:absolute; inset:0; opacity:.16; background-image:radial-gradient(#fff 1px,transparent 1.4px); background-size:14px 14px;}
+.popup__off{font-family:var(--display); font-size:3.4rem; line-height:1; position:relative;}
+.popup__top p{font-size:1.04rem; margin-top:6px; position:relative; opacity:.95;}
+.popup__body{padding:26px 30px 30px; text-align:center;}
+.popup__body h3{font-size:1.5rem; margin-bottom:10px;}
+.popup__body p{color:var(--brown-soft); font-size:.98rem;}
+.popup__code{display:inline-flex; align-items:center; gap:10px; margin:18px 0 22px; padding:12px 20px; border:2px dashed var(--grano); border-radius:var(--r-md); background:rgba(194,145,47,.1);}
+.popup__code span{font-family:var(--sans); font-weight:700; font-size:1.3rem; letter-spacing:.06em; color:var(--terracotta);}
+.popup__code small{font-size:.74rem; color:var(--brown-soft); text-align:left; line-height:1.2;}
+.popup__close{position:absolute; top:12px; right:12px; width:34px;height:34px; border-radius:50%; background:rgba(255,255,255,.2); color:#fff; display:grid; place-items:center; z-index:3; transition:background .15s;}
+.popup__close:hover{background:rgba(255,255,255,.35);}
+.popup__close svg{width:20px;height:20px;}
+
+/* ============ CART TOTALS / DISCOUNT ============ */
+.discount-box{display:flex; gap:8px; margin-bottom:6px;}
+.discount-box input{flex:1; min-width:0; font-family:var(--sans); font-size:.92rem; padding:11px 13px; border:1.5px solid var(--line-strong); border-radius:var(--r-sm); background:var(--paper); color:var(--brown); text-transform:uppercase;}
+.discount-box input::placeholder{text-transform:none; color:var(--brown-faint);}
+.discount-box button{flex:none; padding:0 18px; border-radius:var(--r-sm); border:1.5px solid var(--brown); font-weight:600; font-size:.9rem; background:var(--brown); color:var(--cream); transition:background .15s;}
+.discount-box button:hover{background:#241710;}
+.discount-status{font-size:.82rem; min-height:1em; margin:0 0 10px;}
+.discount-status.ok{color:var(--oliva-dark); font-weight:600;}
+.discount-status.no{color:var(--terracotta);}
+.totals{font-size:.94rem; margin-bottom:12px;}
+.totals__row{display:flex; justify-content:space-between; padding:5px 0; color:var(--brown-soft);}
+.totals__row--disc{color:var(--oliva-dark); font-weight:600;}
+.totals__row--total{border-top:1px solid var(--line); margin-top:4px; padding-top:11px; color:var(--brown); font-weight:700;}
+.totals__row--total span:last-child{font-family:var(--serif); font-size:1.4rem;}
+
+/* ============ CHECKOUT OVERLAY (DEMO) ============ */
+.co-ov{position:fixed; inset:0; background:rgba(40,27,17,.6); backdrop-filter:blur(3px); z-index:115; display:grid; place-items:start center; padding:24px; overflow-y:auto; opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;}
+.co-ov.show{opacity:1; visibility:visible;}
+.co{background:var(--cream); border-radius:var(--r-lg); width:min(940px,100%); margin:auto; box-shadow:var(--shadow-lg); position:relative; overflow:hidden;}
+.co__close{position:absolute; top:16px; right:16px; z-index:5; width:40px;height:40px; border-radius:50%; background:rgba(55,37,24,.08); display:grid; place-items:center; transition:background .15s;}
+.co__close:hover{background:rgba(55,37,24,.16);}
+.co__close svg{width:22px;height:22px;}
+.co__head{padding:28px 34px 0;}
+.co__badge{display:inline-flex; align-items:center; gap:7px; font-size:.72rem; font-weight:600; letter-spacing:.03em; color:var(--oliva-dark); background:rgba(92,106,57,.13); border:1px solid rgba(92,106,57,.3); padding:5px 12px; border-radius:var(--r-pill); margin-bottom:14px;}
+.co__badge svg{width:14px;height:14px;}
+.co__head h3{font-size:1.9rem;}
+.co__grid{display:grid; grid-template-columns:1.15fr .85fr; gap:0;}
+.co__fields{padding:22px 34px 34px;}
+.fieldset-label{font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brown-faint); margin:20px 0 12px;}
+.fieldset-label:first-child{margin-top:6px;}
+.field{margin-bottom:13px;}
+.field label{display:block; font-size:.82rem; font-weight:600; color:var(--brown-soft); margin-bottom:5px;}
+.field input{width:100%; font-family:var(--sans); font-size:.96rem; padding:12px 14px; border:1.5px solid var(--line-strong); border-radius:var(--r-sm); background:var(--paper); color:var(--brown);}
+.field input:focus{border-color:var(--terracotta); outline:none;}
+.field input:invalid:not(:placeholder-shown):not(:focus){border-color:var(--terracotta);}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.co__note{font-size:.8rem; color:var(--brown-faint); text-align:center; margin-top:14px; display:flex; align-items:center; justify-content:center; gap:7px; text-wrap:pretty;}
+.co__note svg{width:15px;height:15px; flex:none;}
+.co__summary{background:var(--cream-2); border-left:1px solid var(--line); padding:28px 30px;}
+.co__summary h4{font-size:1.15rem; margin-bottom:16px;}
+.co__items{margin-bottom:16px; max-height:230px; overflow-y:auto;}
+.co__item{display:flex; justify-content:space-between; gap:12px; font-size:.9rem; padding:8px 0; border-bottom:1px solid var(--line); color:var(--brown-soft);}
+.co__item b{color:var(--brown); font-weight:600;}
+.co__item .q{color:var(--brown-faint);}
+.co__done{padding:54px 40px 48px; text-align:center;}
+.co__check{width:84px;height:84px; margin:0 auto 22px; border-radius:50%; background:rgba(92,106,57,.14); display:grid; place-items:center; color:var(--oliva); animation:pop .4s cubic-bezier(.34,1.56,.64,1);}
+.co__check svg{width:44px;height:44px;}
+@keyframes pop{from{transform:scale(.3); opacity:0;}to{transform:scale(1); opacity:1;}}
+.co__done h3{font-size:2rem; margin-bottom:10px;}
+.co__done p{color:var(--brown-soft); max-width:46ch; margin:0 auto 8px; font-size:1.04rem;}
+.co__order{display:inline-block; margin:18px 0; font-family:var(--serif); font-weight:600; font-size:1.15rem; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); padding:12px 24px; color:var(--brown);}
+.co__order small{display:block; font-family:var(--sans); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--brown-faint); font-weight:600; margin-top:3px;}
+.co__preview-note{font-size:.82rem !important; color:var(--brown-faint) !important; font-style:italic; margin-top:6px !important;}
+@media (max-width:760px){
+  .co__grid{grid-template-columns:1fr;}
+  .co__summary{border-left:none; border-top:1px solid var(--line); order:-1;}
+  .co__head{padding:24px 22px 0;}
+  .co__fields{padding:18px 22px 28px;}
+  .co__head h3{font-size:1.5rem;}
+}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{position:fixed; right:22px; bottom:22px; z-index:80; width:60px;height:60px; border-radius:50%; background:#25D366; box-shadow:var(--shadow-lg); display:grid; place-items:center; transition:transform .2s;}
+.wa-float:hover{transform:scale(1.06);}
+.wa-float svg{width:32px;height:32px; color:#fff;}
+
+/* ============ MOBILE ACTION BAR ============ */
+.mbar{display:none;}
+
+/* ============ TOAST ============ */
+.toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(120%); background:var(--brown); color:var(--cream); padding:14px 22px; border-radius:var(--r-pill); font-weight:600; font-size:.92rem; box-shadow:var(--shadow-lg); z-index:120; display:flex; align-items:center; gap:10px; transition:transform .35s cubic-bezier(.34,1.56,.64,1); max-width:90vw;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast svg{width:18px;height:18px; color:var(--grano-soft);}
+
+/* ============ MOBILE NAV ============ */
+.mobnav{position:fixed; inset:0; background:var(--cream); z-index:95; transform:translateX(100%); transition:transform .3s ease; display:flex; flex-direction:column; padding:24px;}
+.mobnav.show{transform:translateX(0);}
+.mobnav__head{display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;}
+.mobnav__head .x{width:46px;height:46px;border-radius:12px; border:1.5px solid var(--line-strong); display:grid; place-items:center;}
+.mobnav__head .x svg{width:24px;height:24px;}
+.mobnav a{font-family:var(--serif); font-size:1.7rem; padding:16px 0; border-bottom:1px solid var(--line); color:var(--brown);}
+.mobnav .btn{margin-top:24px;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1040px){
+  .grid{grid-template-columns:repeat(3,1fr);}
+  .why__grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:880px){
+  .nav{display:none;}
+  .header__actions .btn--primary{display:none;}
+  .hamburger{display:grid;}
+  .hero__in{grid-template-columns:1fr; gap:40px; padding:48px 24px 56px;}
+  .hero__art{aspect-ratio:16/11; max-height:340px;}
+  .storia__in{grid-template-columns:1fr; gap:36px;}
+  .storia__art{aspect-ratio:16/10;}
+  .contact__in{grid-template-columns:1fr; gap:36px;}
+  .trust__in{grid-template-columns:repeat(2,1fr);}
+  .trust__item:nth-child(3){border-left:none;}
+  .trust__item:nth-child(odd){border-left:none;}
+  .trust__item{border-top:1px solid rgba(255,255,255,.12);}
+  .trust__item:nth-child(1),.trust__item:nth-child(2){border-top:none;}
+}
+@media (max-width:768px){
+  :root{--header-h:64px;}
+  .section{padding:60px 0;}
+  .grid{grid-template-columns:repeat(2,1fr); gap:16px;}
+  .ship__steps{grid-template-columns:1fr;}
+  .card__body{padding:14px 14px 16px;}
+  .card__name{font-size:1.05rem;}
+  body{padding-bottom:64px;}
+  .wa-float{bottom:80px; width:54px;height:54px;}
+  .wa-float svg{width:28px;height:28px;}
+  .mbar{display:grid; grid-template-columns:repeat(3,1fr); position:fixed; bottom:0; left:0; right:0; z-index:85; background:var(--paper); border-top:1px solid var(--line); box-shadow:0 -4px 20px rgba(55,37,24,.1); padding-bottom:env(safe-area-inset-bottom);}
+  .mbar a,.mbar button{display:flex; flex-direction:column; align-items:center; gap:3px; padding:9px 6px; font-size:.7rem; font-weight:600; color:var(--brown); min-height:56px; justify-content:center; position:relative;}
+  .mbar a + a,.mbar button{border-left:1px solid var(--line);}
+  .mbar svg{width:23px;height:23px;}
+  .mbar .mbar__count{position:absolute; top:5px; right:50%; margin-right:-26px; min-width:18px;height:18px; background:var(--terracotta); color:#fff; border-radius:50%; font-size:.66rem; display:grid; place-items:center; font-weight:700;}
+}
+@media (max-width:420px){
+  .grid{grid-template-columns:repeat(2,1fr); gap:12px;}
+  .hero h1{font-size:2.4rem;}
+  .wrap{padding:0 16px;}
+  .catnav__in{padding:12px 16px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ PROMO BAR ============ -->
+<div class="promo" id="promoBar" role="region" aria-label="Promozione primo ordine">
+  <div class="promo__in">
+    <span><b>−10%</b> sul primo ordine col codice <code>BENVENUTO10</code> · spedizione in tutta Italia</span>
+    <a href="#prodotti" class="promo__cta">Vai ai prodotti →</a>
+    <!-- TODO: verify · confermare percentuale sconto e nome codice promo Stripe -->
+  </div>
+  <button class="promo__close" id="promoClose" aria-label="Chiudi promozione">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="wrap header__in">
+    <a href="index.html" class="brand" aria-label="Azienda Fedele, dal 1956 — home">
+      <span class="brand__name">Fe<b>d</b>ele</span>
+      <span class="brand__tag">Calabria · dal 1956</span>
+    </a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="#prodotti">Prodotti</a>
+      <a href="#storia">La nostra storia</a>
+      <a href="#spedizioni">Spedizioni</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <div class="header__actions">
+      <a href="#prodotti" class="btn btn--primary">Ordina</a>
+      <button class="cart-btn" id="cartOpen" aria-label="Apri il carrello">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h2.2l2.2 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+        <span class="cart-count" id="cartCount" aria-hidden="true">0</span>
+      </button>
+      <button class="hamburger" id="menuOpen" aria-label="Apri il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Hero">
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <span class="eyebrow hero__eyebrow"><span class="dot"></span> Prodotti tipici calabresi</span>
+      <h1>Il meglio della <em>Calabria</em>, a casa tua.</h1>
+      <p class="hero__sub">Friselle, pasta artigianale, dolci e n'duja. Di famiglia, dal 1956.</p>
+      <div class="hero__cta">
+        <a href="#prodotti" class="btn btn--primary btn--lg">Ordina ora</a>
+        <a href="#storia" class="btn btn--ghost btn--lg">La nostra storia</a>
+      </div>
+      <p class="hero__micro"><span class="spark">✦</span> <span class="todo">Offerta di lancio · per un periodo limitato</span> <!-- TODO: verify --></p>
+      <div class="hero__facts">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9c0-2 1.5-4 7-4M19 9c0-2-1.5-4-7-4M5 9c0 5 3 8 7 8M19 9c0 5-3 8-7 8"/></svg> Dal 1956</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 5 5 .5-3.8 3.3L16.5 17 12 14.2 7.5 17l1.3-5.2L5 8.5 10 8z"/></svg> Grano 100% italiano</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-5h4v5"/></svg> Artigianale</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h11V6H3zM14 9h3.5L21 12.5V17h-7M7 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M17.5 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/></svg> Spedizione in tutta Italia</span>
+      </div>
+    </div>
+    <div class="hero__art">
+      <!-- TODO: sostituire con foto reale (es. dispensa di famiglia / tavola calabrese). Mai stock. -->
+      <div class="ph ph--hero" role="img" aria-label="Foto in arrivo: prodotti tipici Fedele">
+        <span class="ph__tag">Foto in arrivo</span>
+        <span class="ph__mono">Fedele</span>
+      </div>
+      <div class="hero__seal">
+        <span class="yr">1956</span>
+        <small>di famiglia<br>in Aspromonte</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust" aria-label="Le nostre garanzie">
+  <div class="wrap"><div class="trust__in">
+    <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Tradizione dal 1956</div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9c0-2 1.5-4 7-4M19 9c0-2-1.5-4-7-4M5 9c0 5 3 8 7 8M19 9c0 5-3 8-7 8"/></svg> Grano 100% italiano</div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg> Artigianale di paese</div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h11V6H3zM14 9h3.5L21 12.5V17h-7M7 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M17.5 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/></svg> Spedizione in tutta Italia</div>
+  </div></div>
+</section>
+
+<!-- ============ CATALOG NAV ============ -->
+<nav class="catnav" id="prodotti" aria-label="Categorie prodotti">
+  <div class="catnav__in">
+    <a href="#cat-friselle">Friselle &amp; Friabili</a>
+    <a href="#cat-pasta">Pasta</a>
+    <a href="#cat-dolci">Dolci</a>
+    <a href="#cat-specialita">Specialità</a>
+  </div>
+</nav>
+
+<!-- ============ CATALOG ============ -->
+<main>
+<section class="section" style="padding-top:64px;" data-screen-label="Catalogo">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Il catalogo</span>
+      <h2>La nostra dispensa calabrese</h2>
+      <p>Scegli, aggiungi al carrello e ricevi a casa. I prezzi indicati sono <strong>indicativi</strong> e in via di conferma.</p>
+      <!-- TODO: verify · prezzi indicativi dichiarati dal cliente, da confermare prima del LIVE -->
+    </div>
+    <div id="catalog"></div>
+  </div>
+</section>
+
+<!-- ============ STORIA ============ -->
+<section class="section storia" id="storia" data-screen-label="Storia">
+  <div class="wrap storia__in">
+    <div class="storia__art">
+      <!-- TODO: sostituire con foto reale della famiglia / forno / Aspromonte -->
+      <div class="ph ph--friselle" role="img" aria-label="Foto in arrivo: la famiglia Fedele">
+        <span class="ph__tag">Foto in arrivo</span>
+        <span class="ph__mono">1956</span>
+      </div>
+    </div>
+    <div class="storia__body">
+      <span class="eyebrow">La nostra storia</span>
+      <h2>Una famiglia, un paese, dal 1956</h2>
+      <p>Tutto nasce a Sant'Eufemia d'Aspromonte, ai piedi della montagna. Da tre generazioni lavoriamo grano 100% italiano con le ricette di sempre: friselle che profumano di forno, pasta trafilata come a casa, dolci delle feste.</p>
+      <p>Niente scorciatoie, niente fretta: solo lavoro artigianale e prodotti genuini, fatti per durare e per essere spediti in tutta Italia.</p>
+      <p class="todo">{{Storia dei titolari — testo da confermare con la famiglia Fedele}} <!-- TODO: verify --></p>
+      <p class="storia__sign">Giuseppe Fedele
+        <small>Titolare · <span class="todo">{{+ 2° socio da confermare}}</span> <!-- TODO: verify --></small>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERCHÉ FEDELE ============ -->
+<section class="section" data-screen-label="Perché Fedele">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Perché Fedele</span>
+      <h2>Genuino, e si sente</h2>
+    </div>
+    <div class="why__grid">
+      <div class="why__card">
+        <div class="why__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9c0-2 1.5-4 7-4M19 9c0-2-1.5-4-7-4M5 9c0 5 3 8 7 8M19 9c0 5-3 8-7 8"/></svg></div>
+        <h4>Grano 100% italiano</h4>
+        <p>Semola e farine da grano italiano, selezionato. La base di tutto quello che facciamo.</p>
+      </div>
+      <div class="why__card">
+        <div class="why__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>Lunga conservazione</h4>
+        <p>Friselle e friabili nascono per durare: dispensa sempre pronta, sapore intatto.</p>
+      </div>
+      <div class="why__card">
+        <div class="why__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-5h4v5"/></svg></div>
+        <h4>Ricette tradizionali</h4>
+        <p>Le stesse di sempre, tramandate in famiglia. Dai mostaccioli alla fileja 'i casa.</p>
+      </div>
+      <div class="why__card">
+        <div class="why__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14M6 3l1 6c0 3 2 5 5 5s5-2 5-5l1-6M12 14v5M8 21h8"/></svg></div>
+        <h4>Lavorazione artigianale</h4>
+        <p>Piccoli lotti, mani esperte, tempi giusti. Come si faceva una volta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPEDIZIONI ============ -->
+<section class="section ship" id="spedizioni" data-screen-label="Spedizioni">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow" style="color:var(--grano-soft)">Spedizioni &amp; pagamenti</span>
+      <h2>Dalla Calabria a casa tua</h2>
+      <p>Spediamo in tutta Italia. Ordini in pochi clic, paghi in sicurezza, ricevi i nostri prodotti direttamente a casa.</p>
+    </div>
+    <div class="ship__steps">
+      <div class="ship__step"><div class="ship__num">01</div><h4>Scegli</h4><p>Riempi il carrello con friselle, pasta, dolci e specialità della nostra dispensa.</p></div>
+      <div class="ship__step"><div class="ship__num">02</div><h4>Paga in sicurezza</h4><p>Checkout protetto: carte, Apple Pay e Google Pay. Codice sconto al primo ordine.</p></div>
+      <div class="ship__step"><div class="ship__num">03</div><h4>Ricevi a casa</h4><p>Prepariamo e spediamo il tuo ordine in tutta Italia, con cura.</p></div>
+    </div>
+    <div class="ship__facts">
+      <span class="ship__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 2–5 giorni lavorativi <span class="todo">(indicativo)</span></span>
+      <span class="ship__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h11V6H3zM14 9h3.5L21 12.5V17h-7M7 18.5a1.5 1.5 0 1 0 0-3M17.5 18.5a1.5 1.5 0 1 0 0-3"/></svg> €6,90 · gratis sopra €49 <span class="todo">(indicativo)</span></span>
+      <span class="ship__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h11V6H3zM14 9h3.5L21 12.5V17h-7M7 18.5a1.5 1.5 0 1 0 0-3M17.5 18.5a1.5 1.5 0 1 0 0-3"/></svg> Corriere: <span class="todo">{{da confermare}}</span> <!-- TODO: verify --></span>
+      <span class="ship__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Pagamenti sicuri</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="section contact" id="contatti" data-screen-label="Contatti">
+  <div class="wrap contact__in">
+    <div>
+      <span class="eyebrow" style="color:var(--grano-soft)">Contatti</span>
+      <h2>Parla con noi</h2>
+      <div class="contact__list">
+        <div class="contact__row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span><b>Dove siamo</b>Via Borgo Vico I, n° 25<br>89027 Sant'Eufemia d'Aspromonte (RC)</span>
+        </div>
+        <div class="contact__row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l2 5v3a1 1 0 0 1-1 1A17 17 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg></span>
+          <span><b>Telefono · WhatsApp</b><a href="tel:+393926686996">392 6686996</a> — Giuseppe</span>
+        </div>
+        <div class="contact__row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><b>Email</b><a href="mailto:giuseppefedele1704@gmail.com">giuseppefedele1704@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="contact__card">
+      <h3>Ordina o scrivici su WhatsApp</h3>
+      <p>Per ordini, regali e quantità grandi: scrivici, ti rispondiamo volentieri.</p>
+      <a href="https://wa.me/393926686996" target="_blank" rel="noopener" class="btn btn--primary btn--block btn--lg" style="background:#25D366;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.8.9.8 1.7 1.1 2 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.2z"/></svg>
+        Scrivici su WhatsApp
+      </a>
+      <!-- TODO: verify · confermare che il numero sia attivo su WhatsApp -->
+      <div class="contact__social">
+        <!-- TODO: verify · inserire link reali Instagram / Facebook quando disponibili -->
+        <a href="#" aria-label="Instagram (link da confermare)" title="{{Instagram — link da confermare}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook (link da confermare)" title="{{Facebook — link da confermare}}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.1H7.5V14h2.2v8z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div class="footer__legal">
+      <span><strong style="color:var(--cream);font-family:var(--display);">Fedele</strong> — FEDELE S.R.L.S.U.</span>
+      <span>· P.IVA <span class="todo">{{P.IVA da confermare}}</span></span>
+      <!-- TODO: verify · inserire Partita IVA -->
+    </div>
+    <div class="footer__legal">
+      <a href="#" class="todo">Privacy &amp; Cookie {{da predisporre}}</a>
+      <!-- TODO: verify · predisporre pagine Privacy/Cookie -->
+      <span>· © <span id="year"></span> · Sant'Eufemia d'Aspromonte (RC)</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Carrello" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Il tuo carrello</h3>
+    <button class="x" id="cartClose" aria-label="Chiudi carrello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="drawer__body" id="cartBody"></div>
+  <div class="drawer__foot" id="cartFoot" hidden>
+    <div class="discount-box">
+      <label for="discountInput" class="sr-only">Codice sconto</label>
+      <input id="discountInput" type="text" placeholder="Codice sconto (es. BENVENUTO10)" autocomplete="off" />
+      <button id="discountApply" type="button">Applica</button>
+    </div>
+    <p class="discount-status" id="discountStatus" role="status" aria-live="polite"></p>
+    <div class="totals">
+      <div class="totals__row"><span>Subtotale</span><span id="tSub">€0,00</span></div>
+      <div class="totals__row totals__row--disc" id="tDiscRow" hidden><span>Sconto BENVENUTO10 (−10%)</span><span id="tDisc">−€0,00</span></div>
+      <div class="totals__row"><span>Spedizione</span><span id="tShip">—</span></div>
+      <div class="totals__row totals__row--total"><span>Totale</span><span id="tTotal">€0,00</span></div>
+    </div>
+    <p class="drawer__ship">Spedizione in tutta Italia · €6,90 · gratis sopra €49 · 2–5 giorni lavorativi <span class="todo">(indicativo)</span></p>
+    <button class="checkout-btn" id="checkoutBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg>
+      Procedi al pagamento
+    </button>
+    <div class="pay">
+      <span class="pay__secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Pagamenti sicuri</span>
+      <span class="pay__icons">
+        <span class="pay__badge" style="color:#1A1F71;">VISA</span>
+        <span class="pay__badge" aria-label="Mastercard"><svg viewBox="0 0 32 20" fill="none"><circle cx="13" cy="10" r="7" fill="#EB001B"/><circle cx="19" cy="10" r="7" fill="#F79E1B" fill-opacity="0.9"/></svg></span>
+        <span class="pay__badge"> Pay</span>
+        <span class="pay__badge">G Pay</span>
+      </span>
+    </div>
+  </div>
+</aside>
+
+<!-- ============ CHECKOUT OVERLAY (DEMO front-end · nessun pagamento reale) ============ -->
+<div class="co-ov" id="coOv" role="dialog" aria-modal="true" aria-labelledby="coTitle" aria-hidden="true">
+  <div class="co">
+    <button class="co__close" id="coClose" aria-label="Chiudi checkout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+
+    <!-- STEP 1 · form -->
+    <div id="coStep1">
+      <div class="co__head">
+        <span class="co__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Anteprima dimostrativa — nessun pagamento reale</span>
+        <h3 id="coTitle">Completa il tuo ordine</h3>
+      </div>
+      <div class="co__grid">
+        <form class="co__fields" id="payForm" novalidate>
+          <div class="fieldset-label">Dati di consegna</div>
+          <div class="field"><label for="f-name">Nome e cognome</label><input id="f-name" name="name" required placeholder="Mario Rossi" autocomplete="name" /></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required placeholder="mario@email.it" autocomplete="email" /></div>
+          <div class="field"><label for="f-addr">Indirizzo</label><input id="f-addr" name="addr" required placeholder="Via e numero civico" autocomplete="street-address" /></div>
+          <div class="field-row">
+            <div class="field"><label for="f-city">Città</label><input id="f-city" name="city" required placeholder="Città" autocomplete="address-level2" /></div>
+            <div class="field"><label for="f-cap">CAP</label><input id="f-cap" name="cap" required placeholder="89027" inputmode="numeric" pattern="\d{5}" autocomplete="postal-code" /></div>
+          </div>
+          <div class="fieldset-label">Pagamento · carta dimostrativa</div>
+          <div class="field"><label for="f-card">Numero carta</label><input id="f-card" name="card" required placeholder="4242 4242 4242 4242" inputmode="numeric" autocomplete="off" /></div>
+          <div class="field-row">
+            <div class="field"><label for="f-exp">Scadenza</label><input id="f-exp" name="exp" required placeholder="MM/AA" autocomplete="off" /></div>
+            <div class="field"><label for="f-cvc">CVC</label><input id="f-cvc" name="cvc" required placeholder="123" inputmode="numeric" autocomplete="off" /></div>
+          </div>
+          <button type="submit" class="checkout-btn" style="margin-top:10px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Paga ora<span id="coPayTotal"></span>
+          </button>
+          <p class="co__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Anteprima dimostrativa: nessun dato viene inviato, nessun addebito reale.</p>
+        </form>
+        <aside class="co__summary">
+          <h4>Riepilogo ordine</h4>
+          <div class="co__items" id="coItems"></div>
+          <div class="discount-box">
+            <label for="coDiscount" class="sr-only">Codice sconto</label>
+            <input id="coDiscount" type="text" placeholder="Codice sconto" autocomplete="off" />
+            <button id="coDiscountApply" type="button">Applica</button>
+          </div>
+          <p class="discount-status" id="coDiscountStatus" role="status" aria-live="polite"></p>
+          <div class="totals">
+            <div class="totals__row"><span>Subtotale</span><span id="coSub">€0,00</span></div>
+            <div class="totals__row totals__row--disc" id="coDiscRow" hidden><span>Sconto BENVENUTO10 (−10%)</span><span id="coDisc">−€0,00</span></div>
+            <div class="totals__row"><span>Spedizione</span><span id="coShip">—</span></div>
+            <div class="totals__row totals__row--total"><span>Totale</span><span id="coTotal">€0,00</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- STEP 2 · conferma -->
+    <div class="co__done" id="coStep2" hidden>
+      <div class="co__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13l5 5L20 6"/></svg></div>
+      <h3>Ordine confermato</h3>
+      <p>Grazie! Abbiamo ricevuto il tuo ordine. Riceverai una email di conferma con i dettagli della spedizione.</p>
+      <div class="co__order" id="coOrderNo">ORDINE #—<small>numero ordine</small></div>
+      <p class="co__preview-note">Anteprima dimostrativa — nessun pagamento è stato realmente effettuato.</p>
+      <button class="btn btn--primary btn--lg" id="coDoneBtn" style="margin-top:20px;">Continua lo shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROMO POPUP ============ -->
+<div class="popup-ov" id="popupOv" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
+  <div class="popup">
+    <button class="popup__close" id="popupClose" aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="popup__top">
+      <div class="popup__off">−10%</div>
+      <p>sul tuo primo ordine</p>
+    </div>
+    <div class="popup__body">
+      <h3 id="popupTitle">Benvenuto in famiglia</h3>
+      <p>Assaggia la Calabria vera. Usa il codice al checkout e ricevi i nostri prodotti in tutta Italia.</p>
+      <div class="popup__code">
+        <span>BENVENUTO10</span>
+        <small>−10%<br>primo ordine</small>
+      </div>
+      <!-- TODO: verify · confermare codice e percentuale -->
+      <a href="#prodotti" class="btn btn--primary btn--block btn--lg" id="popupCta">Scopri i prodotti</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a href="https://wa.me/393926686996" target="_blank" rel="noopener" class="wa-float" aria-label="Scrivici su WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.8.9.8 1.7 1.1 2 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.2z"/></svg>
+</a>
+
+<!-- ============ MOBILE ACTION BAR ============ -->
+<nav class="mbar" aria-label="Azioni rapide">
+  <a href="https://wa.me/393926686996" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.8.9.8 1.7 1.1 2 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.2z"/></svg>
+    WhatsApp
+  </a>
+  <a href="tel:+393926686996">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 13l5 2v4a1 1 0 0 1-1 1A17 17 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
+    Chiama
+  </a>
+  <button id="cartOpenMobile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h2.2l2.2 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+    Carrello
+    <span class="mbar__count" id="mbarCount" hidden>0</span>
+  </button>
+</nav>
+
+<!-- ============ MOBILE NAV ============ -->
+<div class="mobnav" id="mobnav" aria-hidden="true">
+  <div class="mobnav__head">
+    <span class="brand__name" style="font-family:var(--display);font-size:1.6rem;">Fe<b style="color:var(--terracotta)">d</b>ele</span>
+    <button class="x" id="menuClose" aria-label="Chiudi menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <a href="#prodotti">Prodotti</a>
+  <a href="#storia">La nostra storia</a>
+  <a href="#spedizioni">Spedizioni</a>
+  <a href="#contatti">Contatti</a>
+  <a href="#prodotti" class="btn btn--primary btn--lg">Ordina ora</a>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"Azienda Fedele",
+  "legalName":"FEDELE S.R.L.S.U.",
+  "description":"Prodotti tipici calabresi artigianali, grano 100% italiano. Friselle, pasta, dolci e n'duja spediti in tutta Italia. Di famiglia dal 1956.",
+  "foundingDate":"1956",
+  "telephone":"+39-392-6686996",
+  "email":"giuseppefedele1704@gmail.com",
+  "currenciesAccepted":"EUR",
+  "paymentAccepted":"Carte di credito, Apple Pay, Google Pay",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Via Borgo Vico I, n° 25",
+    "postalCode":"89027",
+    "addressLocality":"Sant'Eufemia d'Aspromonte",
+    "addressRegion":"RC",
+    "addressCountry":"IT"
+  },
+  "areaServed":{"@type":"Country","name":"Italia"}
+}
+</script>
+
+<script>
+/* ============ DATA — prezzi SOLO display (i prezzi veri stanno nella funzione serverless) ============ */
+/* I prezzi qui sotto sono INDICATIVI (dichiarati dal cliente) e in centesimi. Da confermare prima del LIVE. */
+const PRODUCTS = [
+  // FRISELLE & FRIABILI
+  {id:"friselle-peperoncino", cat:"friselle", name:"Friselle Peperoncino", weight:"400g", novita:true, price:450, desc:"Peperoncino a foglia larga; ottime con olio e pomodorini."},
+  {id:"friselle-bianche", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:390, desc:"Con olio e pomodorini o inumidite; lunga conservazione."},
+  {id:"friselle-integrali", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:420, desc:"Grano integrale 100% italiano; per una dieta bilanciata."},
+  {id:"friselle-finocchio", cat:"friselle", name:"Friselle Finocchio", weight:"400g", price:420, desc:"Profumate con semi di finocchio."},
+  {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"320g", novita:true, price:450, desc:"5 cereali, da gustare senza bagnare."},
+  {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"320g", price:390, desc:"Non bagnare: mantiene tutta la friabilità."},
+  {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"320g", price:420, desc:"Farina integrale 100% italiana."},
+  {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"320g", price:420, desc:"Farina di mais 100% italiana, leggere."},
+  // PASTA
+  {id:"fileja-casa", cat:"pasta", name:"Fileja 'i Casa", weight:"500g", price:490, desc:"La tipica calabrese, 12 min, versatile."},
+  {id:"fileja-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"500g", price:550, desc:"Piccante non eccessivo, ben bilanciata."},
+  {id:"fileja-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"500g", novita:true, price:590, desc:"Con peperoncino e spinaci."},
+  {id:"fileja-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"500g", price:650, desc:"Profumata al bergamotto di Calabria."},
+  {id:"fileja-nero-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"500g", price:690, desc:"Pronta subito, dal gusto deciso."},
+  {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"500g", price:490, desc:"12 min; perfette con ragù o cime di rapa."},
+  {id:"paccheri", cat:"pasta", name:"Paccheri", weight:"500g", price:490, desc:"12 min, versatili per ogni sugo."},
+  {id:"paglia-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"500g", price:550, desc:"Con spinaci, colore e gusto."},
+  {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"500g", price:490, desc:"Solo 5 minuti di cottura."},
+  {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"500g", price:550, desc:"Semola dura integrale; ottima col pesce stocco."},
+  {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"500g", price:490, desc:"Variante piccola della fileja, 12 min."},
+  {id:"tagliatelle", cat:"pasta", name:"Tagliatelle", weight:"500g", price:490, desc:"Lunghe e a nido, 12 min."},
+  {id:"tagliolini-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"500g", price:650, desc:"Solo 5 minuti di cottura."},
+  // DOLCI
+  {id:"baba-rum", cat:"dolci", name:"Babà al Rum", weight:"350g", price:790, desc:"Morbido, immerso nel rum."},
+  {id:"biscotti-miele", cat:"dolci", name:"Biscotti al Miele", weight:"300g", price:650, desc:"Con mandorle e miele."},
+  {id:"golosi-limone", cat:"dolci", name:"Golosi al Limone", weight:"280g", price:690, desc:"Crema al limone, senza zuccheri aggiunti."},
+  {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"300g", price:650, desc:"Tipici delle feste, forme a \u201cS\u201d e a pesce."},
+  {id:"nacatole-anice", cat:"dolci", name:"Nacatole Anice", weight:"270g", price:650, desc:"Artigianali, all'anice."},
+  {id:"nacatole-bergamotto", cat:"dolci", name:"Nacatole Bergamotto", weight:"270g", price:690, desc:"Profumate al bergamotto."},
+  {id:"nacatole-limone", cat:"dolci", name:"Nacatole Limone", weight:"270g", price:650, desc:"Profumate al limone."},
+  {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"220g", price:650, desc:"Al sesamo, pochi zuccheri."},
+  {id:"susumelle-nere", cat:"dolci", name:"Susumelle Nere", weight:"300g", price:750, desc:"Copertura al cacao."},
+  // SPECIALITÀ
+  {id:"nduja", cat:"specialita", name:"N'duja di Spilinga", weight:"210g", price:790, desc:"Suino, sale e peperoncino calabrese, senza conservanti; per pasta, pane e friselle."}
+];
+
+const CATEGORIES = [
+  {id:"friselle", anchor:"cat-friselle", title:"Friselle & Friabili", note:"Per la dispensa, lunga conservazione"},
+  {id:"pasta", anchor:"cat-pasta", title:"Pasta", note:"Semola 100% italiana"},
+  {id:"dolci", anchor:"cat-dolci", title:"Dolci", note:"Le ricette delle feste"},
+  {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"}
+];
+
+/* ============ CONFIG (demo front-end · nessuna chiamata di rete) ============ */
+const SHIPPING = 690;            // €6,90 — INDICATIVO {{confermare}}
+const FREE_SHIP_OVER = 4900;     // gratis sopra €49 — INDICATIVO {{confermare}}
+const DISCOUNT_CODE = "BENVENUTO10";
+const DISCOUNT_RATE = 0.10;      // −10% primo ordine
+const DISCOUNT_KEY = "fedele_discount_v1";
+let discountApplied = false;
+try{ discountApplied = localStorage.getItem(DISCOUNT_KEY)==="1"; }catch(e){}
+
+/* ============ HELPERS ============ */
+const fmt = c => (c/100).toLocaleString("it-IT",{style:"currency",currency:"EUR"});
+const byId = id => PRODUCTS.find(p=>p.id===id);
+const monogram = name => name.split(" ").filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join("").toUpperCase() || name[0].toUpperCase();
+const $ = s => document.querySelector(s);
+
+function phHtml(p, label){
+  return `<div class="ph ph--${p.cat}" role="img" aria-label="${label?label:'Foto in arrivo: '+p.name}">
+    <span class="ph__tag">Foto</span><span class="ph__mono">${monogram(p.name)}</span></div>`;
+}
+
+/* ============ CART STATE ============ */
+const CART_KEY = "fedele_cart_v1";
+let cart = {};
+try{ cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; }catch(e){ cart = {}; }
+function saveCart(){ try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }catch(e){} }
+
+/* ============ RENDER CATALOG ============ */
+function renderCatalog(){
+  const root = $("#catalog");
+  root.innerHTML = CATEGORIES.map(cat=>{
+    const items = PRODUCTS.filter(p=>p.cat===cat.id);
+    const cards = items.map(p=>`
+      <article class="card">
+        <div class="card__media">
+          ${p.novita?'<span class="card__badge">Novità</span>':''}
+          <img class="prod-img" src="assets/${p.id}.png" alt="${p.name}" loading="lazy">
+        </div>
+        <div class="card__body">
+          <h4 class="card__name">${p.name}</h4>
+          <span class="card__meta">${p.weight}</span>
+          <p class="card__desc">${p.desc}</p>
+          <div class="card__foot">
+            <span class="card__price">${fmt(p.price)}<span class="ind" title="Prezzo indicativo, da confermare">ind.</span></span>
+          </div>
+          <div class="qtyrow">
+            <div class="stepper" role="group" aria-label="Quantità ${p.name}">
+              <button type="button" aria-label="Diminuisci" data-step="-1" data-pid="${p.id}">−</button>
+              <input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantità" id="qty-${p.id}" />
+              <button type="button" aria-label="Aumenta" data-step="1" data-pid="${p.id}">+</button>
+            </div>
+            <button class="add-btn" data-add="${p.id}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Aggiungi
+            </button>
+          </div>
+        </div>
+      </article>`).join("");
+    return `<section class="catblock" id="${cat.anchor}" aria-labelledby="h-${cat.id}">
+      <div class="catblock__head">
+        <div><h3 id="h-${cat.id}">${cat.title}</h3></div>
+        <span class="catblock__note">${cat.note} · <span class="count">${items.length} prodotti</span></span>
+      </div>
+      <div class="grid">${cards}</div>
+    </section>`;
+  }).join("");
+}
+
+/* ============ CART RENDER ============ */
+function cartQtyTotal(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function cartSubtotal(){ return Object.entries(cart).reduce((a,[id,q])=>{const p=byId(id);return a+(p?p.price*q:0);},0); }
+function shippingCost(){ const s=cartSubtotal(); return (s>0 && s<FREE_SHIP_OVER) ? SHIPPING : 0; }
+function discountAmount(){ return discountApplied ? Math.round(cartSubtotal()*DISCOUNT_RATE) : 0; }
+function grandTotal(){ return cartSubtotal() - discountAmount() + shippingCost(); }
+
+function renderTotals(){
+  const sub=cartSubtotal(), disc=discountAmount(), ship=shippingCost(), tot=grandTotal();
+  const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+  const showDisc = discountApplied && disc>0;
+  set("tSub",fmt(sub)); set("coSub",fmt(sub));
+  set("tDisc","\u2212"+fmt(disc)); set("coDisc","\u2212"+fmt(disc));
+  ['tDiscRow','coDiscRow'].forEach(id=>{const el=document.getElementById(id); if(el) el.hidden=!showDisc;});
+  const shipTxt = sub===0 ? "\u2014" : (ship===0 ? "Gratis" : fmt(ship));
+  set("tShip",shipTxt); set("coShip",shipTxt);
+  set("tTotal",fmt(tot)); set("coTotal",fmt(tot));
+  const pt=document.getElementById("coPayTotal"); if(pt) pt.textContent=" \u00b7 "+fmt(tot);
+}
+
+function renderCart(){
+  const body = $("#cartBody"), foot = $("#cartFoot");
+  const ids = Object.keys(cart).filter(id=>byId(id));
+  if(ids.length===0){
+    body.innerHTML = `<div class="drawer__empty">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h2.2l2.2 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg></div>
+      <h4>Il carrello è vuoto</h4>
+      <p>Aggiungi i nostri prodotti tipici e ricevili a casa in tutta Italia.</p>
+      <button class="btn btn--primary btn--lg" style="margin-top:18px;" onclick="closeCart();document.getElementById('prodotti').scrollIntoView();">Scopri i prodotti</button>
+    </div>`;
+    foot.hidden = true;
+  } else {
+    body.innerHTML = ids.map(id=>{
+      const p = byId(id), q = cart[id];
+      return `<div class="line">
+        <div class="line__media"><img class="prod-img" src="assets/${p.id}.png" alt="${p.name}" loading="lazy"></div>
+        <div>
+          <div class="line__name">${p.name}</div>
+          <div class="line__meta">${p.weight} · ${fmt(p.price)} cad.</div>
+          <div class="line__ctl">
+            <div class="stepper" role="group" aria-label="Quantità ${p.name}">
+              <button type="button" aria-label="Diminuisci" data-cstep="-1" data-pid="${id}">−</button>
+              <input type="number" min="1" value="${q}" inputmode="numeric" aria-label="Quantità" data-cqty="${id}" />
+              <button type="button" aria-label="Aumenta" data-cstep="1" data-pid="${id}">+</button>
+            </div>
+            <button class="line__rm" data-rm="${id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/></svg> Rimuovi</button>
+          </div>
+        </div>
+        <div class="line__price">${fmt(p.price*q)}</div>
+      </div>`;
+    }).join("");
+    foot.hidden = false;
+    renderTotals();
+  }
+}
+
+function updateCount(){
+  const n = cartQtyTotal();
+  const badge = $("#cartCount"), mb = $("#mbarCount");
+  badge.textContent = n; badge.classList.toggle("show", n>0);
+  if(n>0){ mb.hidden=false; mb.textContent=n; } else { mb.hidden=true; }
+}
+
+function addToCart(id, qty){
+  cart[id] = (cart[id]||0) + qty;
+  saveCart(); updateCount(); renderCart();
+}
+function setQty(id, qty){
+  if(qty<=0){ delete cart[id]; } else { cart[id]=qty; }
+  saveCart(); updateCount(); renderCart();
+}
+
+/* ============ TOAST ============ */
+let toastT;
+function toast(msg){
+  const t = $("#toast");
+  t.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> ${msg}`;
+  t.classList.add("show");
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+/* ============ DRAWER ============ */
+const overlay = $("#overlay"), drawer = $("#drawer");
+function openCart(){ drawer.classList.add("show"); overlay.classList.add("show"); drawer.setAttribute("aria-hidden","false"); document.body.classList.add("no-scroll"); }
+function closeCart(){ drawer.classList.remove("show"); overlay.classList.remove("show"); drawer.setAttribute("aria-hidden","true"); document.body.classList.remove("no-scroll"); }
+
+/* ============ DISCOUNT ============ */
+function applyDiscount(code, statusEl){
+  const ok = (code||"").trim().toUpperCase()===DISCOUNT_CODE;
+  if(ok){
+    discountApplied=true; try{localStorage.setItem(DISCOUNT_KEY,"1");}catch(e){}
+    if(statusEl){ statusEl.textContent="Codice applicato \u2713 \u221210% sul primo ordine."; statusEl.className="discount-status ok"; }
+  } else if(statusEl){
+    statusEl.textContent="Codice non valido. Prova BENVENUTO10."; statusEl.className="discount-status no";
+  }
+  renderTotals();
+  return ok;
+}
+
+/* ============ CHECKOUT (DEMO front-end · nessuna chiamata di rete) ============ */
+const coOv = $("#coOv");
+const payForm = $("#payForm");
+function openCheckout(){
+  if(Object.keys(cart).filter(id=>byId(id)).length===0) return;
+  closeCart();
+  // riepilogo prodotti
+  const items = Object.keys(cart).filter(id=>byId(id));
+  $("#coItems").innerHTML = items.map(id=>{const p=byId(id),q=cart[id];
+    return `<div class="co__item"><span><b>${p.name}</b> <span class="q">\u00d7${q}</span></span><span>${fmt(p.price*q)}</span></div>`;}).join("");
+  // riflette lo sconto già applicato
+  const cs=$("#coDiscountStatus");
+  if(discountApplied){ cs.textContent="Codice BENVENUTO10 applicato \u2713 \u221210%."; cs.className="discount-status ok"; $("#coDiscount").value=DISCOUNT_CODE; }
+  else { cs.textContent=""; cs.className="discount-status"; }
+  renderTotals();
+  $("#coStep1").hidden=false; $("#coStep2").hidden=true;
+  coOv.classList.add("show"); coOv.setAttribute("aria-hidden","false"); document.body.classList.add("no-scroll");
+  setTimeout(()=>$("#f-name").focus(),120);
+}
+function closeCheckout(){ coOv.classList.remove("show"); coOv.setAttribute("aria-hidden","true"); document.body.classList.remove("no-scroll"); }
+
+payForm.addEventListener("submit", e=>{
+  e.preventDefault();
+  if(!payForm.checkValidity()){ payForm.reportValidity(); return; }
+  // DEMO: nessun addebito, nessuna chiamata di rete — simula la conferma
+  const no = "FD-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-5);
+  $("#coOrderNo").innerHTML = `${no}<small>numero ordine</small>`;
+  $("#coStep1").hidden=true; $("#coStep2").hidden=false;
+  if(coOv.querySelector(".co")) coOv.querySelector(".co").scrollTop=0;
+});
+
+$("#coDoneBtn").addEventListener("click", ()=>{
+  cart={}; saveCart(); updateCount(); renderCart(); payForm.reset(); closeCheckout();
+});
+
+/* ============ EVENTS ============ */
+document.addEventListener("click", e=>{
+  const add = e.target.closest("[data-add]");
+  if(add){
+    const id = add.dataset.add;
+    const input = document.getElementById("qty-"+id);
+    let qty = parseInt(input.value,10); if(!qty||qty<1) qty=1;
+    addToCart(id, qty);
+    add.classList.add("added"); add.querySelector("svg").outerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+    const label = add.childNodes[add.childNodes.length-1];
+    add.lastChild.textContent = " Aggiunto";
+    toast(p_(id)+" aggiunto al carrello");
+    setTimeout(()=>{ add.classList.remove("added"); add.querySelector("svg").outerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>'; add.lastChild.textContent=" Aggiungi"; },1400);
+    input.value = 1;
+    return;
+  }
+  const step = e.target.closest("[data-step]");
+  if(step){
+    const input = document.getElementById("qty-"+step.dataset.pid);
+    let v = parseInt(input.value,10)||1; v += parseInt(step.dataset.step,10); if(v<1) v=1;
+    input.value = v; return;
+  }
+  const cstep = e.target.closest("[data-cstep]");
+  if(cstep){
+    const id = cstep.dataset.pid;
+    setQty(id, (cart[id]||0) + parseInt(cstep.dataset.cstep,10));
+    return;
+  }
+  const rm = e.target.closest("[data-rm]");
+  if(rm){ setQty(rm.dataset.rm, 0); return; }
+});
+
+document.addEventListener("change", e=>{
+  const cq = e.target.closest("[data-cqty]");
+  if(cq){ let v=parseInt(cq.value,10); if(!v||v<1)v=1; setQty(cq.dataset.cqty, v); }
+});
+
+function p_(id){ const p=byId(id); return p?p.name:"Prodotto"; }
+
+$("#cartOpen").addEventListener("click", openCart);
+$("#cartOpenMobile").addEventListener("click", openCart);
+$("#cartClose").addEventListener("click", closeCart);
+$("#overlay").addEventListener("click", closeCart);
+$("#checkoutBtn").addEventListener("click", openCheckout);
+$("#coClose").addEventListener("click", closeCheckout);
+coOv.addEventListener("click", e=>{ if(e.target===coOv) closeCheckout(); });
+$("#discountApply").addEventListener("click", ()=>applyDiscount($("#discountInput").value, $("#discountStatus")));
+$("#coDiscountApply").addEventListener("click", ()=>{ if(applyDiscount($("#coDiscount").value, $("#coDiscountStatus"))){ const ds=$("#discountStatus"); ds.textContent="Codice applicato \u2713 \u221210% sul primo ordine."; ds.className="discount-status ok"; } });
+$("#discountInput").addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); applyDiscount($("#discountInput").value, $("#discountStatus")); } });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeCheckout(); closeCart(); closePopup(); closeMenu(); }});
+
+/* ============ MOBILE NAV ============ */
+const mobnav = $("#mobnav");
+function openMenu(){ mobnav.classList.add("show"); mobnav.setAttribute("aria-hidden","false"); document.body.classList.add("no-scroll"); }
+function closeMenu(){ mobnav.classList.remove("show"); mobnav.setAttribute("aria-hidden","true"); document.body.classList.remove("no-scroll"); }
+$("#menuOpen").addEventListener("click", openMenu);
+$("#menuClose").addEventListener("click", closeMenu);
+mobnav.querySelectorAll("a").forEach(a=>a.addEventListener("click", closeMenu));
+
+/* ============ PROMO BAR ============ */
+const PROMO_KEY = "fedele_promo_dismissed_v1";
+if(localStorage.getItem(PROMO_KEY)==="1"){ document.body.classList.add("promo-hidden"); }
+$("#promoClose").addEventListener("click", ()=>{ document.body.classList.add("promo-hidden"); try{localStorage.setItem(PROMO_KEY,"1");}catch(e){} });
+
+/* ============ POPUP ============ */
+const POPUP_KEY = "fedele_popup_shown_v1";
+const popupOv = $("#popupOv");
+function openPopup(){ popupOv.classList.add("show"); popupOv.setAttribute("aria-hidden","false"); }
+function closePopup(){ popupOv.classList.remove("show"); popupOv.setAttribute("aria-hidden","true"); }
+$("#popupClose").addEventListener("click", closePopup);
+$("#popupCta").addEventListener("click", closePopup);
+popupOv.addEventListener("click", e=>{ if(e.target===popupOv) closePopup(); });
+if(!sessionStorage.getItem(POPUP_KEY)){
+  setTimeout(()=>{ openPopup(); try{sessionStorage.setItem(POPUP_KEY,"1");}catch(e){} }, 5000);
+}
+
+/* ============ INIT ============ */
+renderCatalog();
+renderCart();
+updateCount();
+$("#year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
