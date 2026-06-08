@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La nostra storia — Azienda Fedele · dal 1956</title>
+<meta name="description" content="La storia della famiglia Fedele: quattro generazioni, dal commercio itinerante dei primi del Novecento ai forni di oggi. Prodotti tipici calabresi dal 1956." />
+<meta name="robots" content="index" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cream:#F5EDDD; --cream-2:#FBF6EC; --paper:#FFFDF8;
+  --terracotta:#B23A22; --terracotta-dark:#8C2B16;
+  --grano:#C2912F; --grano-soft:#E6CB86; --oliva:#5C6A39; --oliva-dark:#454F29;
+  --brown:#372518; --brown-soft:#6E5848; --brown-faint:#9A8674;
+  --line:rgba(55,37,24,.14); --line-strong:rgba(55,37,24,.26);
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Jost", system-ui, -apple-system, sans-serif;
+  --maxw:1180px; --shadow:0 18px 50px rgba(55,37,24,.18);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--sans);font-weight:300;color:var(--brown);background:var(--cream);
+  font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:.01em;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem);}
+.eyebrow{font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta);display:inline-flex;align-items:center;gap:.7rem;}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--grano);}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:.95rem 1.8rem;border-radius:999px;transition:.25s;border:1px solid transparent;}
+.btn--primary{background:var(--terracotta);color:#fff;}
+.btn--primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);}
+.btn--ghost{border-color:var(--line-strong);color:var(--brown);}
+.btn--ghost:hover{border-color:var(--brown);background:rgba(55,37,24,.04);}
+/* promo */
+.promo{background:linear-gradient(90deg,var(--terracotta),var(--terracotta-dark));color:#fff;font-size:.85rem;text-align:center;padding:.55rem 2.6rem;position:relative;}
+.promo b{font-weight:600;} .promo a{text-decoration:underline;text-underline-offset:3px;font-weight:500;}
+.promo__x{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;opacity:.85;}
+.promo.hide{display:none;}
+/* header */
+.header{position:sticky;top:0;z-index:50;background:rgba(245,237,221,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.brand{display:flex;flex-direction:column;line-height:1;}
+.brand__name{font-family:var(--serif);font-weight:600;font-size:1.7rem;letter-spacing:.04em;color:var(--brown);}
+.brand__name b{color:var(--terracotta);}
+.brand__tag{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--brown-faint);margin-top:.25rem;}
+.nav{display:flex;gap:2rem;}
+.nav a{font-family:var(--sans);font-size:.82rem;letter-spacing:.05em;color:var(--brown-soft);}
+.nav a:hover,.nav a.active{color:var(--terracotta);}
+@media(max-width:820px){.nav{display:none;}}
+/* hero */
+.s-hero{background:var(--oliva-deep,#2c3420);background:linear-gradient(180deg,var(--oliva-dark),#2c3420);color:var(--cream-2);text-align:center;padding:clamp(3.5rem,8vw,6rem) 0;}
+.s-hero .eyebrow{color:var(--grano-soft);justify-content:center;}
+.s-hero h1{color:#fff;font-size:clamp(2.8rem,7vw,5rem);margin:1rem 0 .6rem;}
+.s-hero p{color:rgba(245,240,232,.82);max-width:48ch;margin:0 auto;font-size:1.15rem;}
+/* long read */
+.read{max-width:760px;margin:0 auto;padding:clamp(3rem,7vw,5.5rem) clamp(1.2rem,4vw,2.5rem);}
+.read .lead{font-size:1.3rem;color:var(--brown);font-style:italic;font-family:var(--serif);margin:0 0 2.5rem;}
+.chapter{margin:0 0 2.8rem;}
+.chapter .eyebrow{margin-bottom:.8rem;}
+.chapter h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:0 0 1rem;}
+.chapter p{color:var(--brown-soft);margin:0 0 1.1rem;}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.2vw,2.1rem);color:var(--terracotta);
+  border-left:3px solid var(--grano);padding:.2rem 0 .2rem 1.3rem;margin:2rem 0;line-height:1.3;}
+.s-cta{text-align:center;border-top:1px solid var(--line);padding-top:2.6rem;margin-top:1rem;}
+.s-cta h3{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.4rem;}
+.s-cta .row{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+/* footer */
+.footer{background:var(--brown);color:var(--cream-2);text-align:center;padding:2.2rem 0;font-size:.85rem;}
+.footer a{color:var(--grano-soft);}
+</style>
+</head>
+<body>
+
+<div class="promo" id="promo">
+  <b>−10%</b> sul primo ordine con il codice <b>BENVENUTO10</b> · spedizione in tutta Italia ·
+  <a href="shop.html">Ordina ora →</a>
+  <button class="promo__x" aria-label="Chiudi" onclick="document.getElementById('promo').classList.add('hide')">&times;</button>
+</div>
+
+<header class="header">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="Azienda Fedele, home">
+      <span class="brand__name">Fe<b>d</b>ele</span>
+      <span class="brand__tag">Calabria · dal 1956</span>
+    </a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Negozio</a>
+      <a href="storia.html" class="active">La nostra storia</a>
+      <a href="index.html#contatti">Contatti</a>
+    </nav>
+    <a href="shop.html" class="btn btn--primary">Ordina</a>
+  </div>
+</header>
+
+<section class="s-hero">
+  <div class="wrap">
+    <span class="eyebrow">Dal 1956</span>
+    <h1>La nostra storia</h1>
+    <p>Una famiglia, prima ancora che un'azienda. Quattro generazioni, una sola direzione.</p>
+  </div>
+</section>
+
+<article class="read">
+  <p class="lead">Ci sono nomi che non nascono per essere insegne. Nascono per essere eredità. Fedele non è solo un'azienda: è il cognome di una famiglia che, da oltre un secolo, ha deciso ogni giorno la stessa cosa — non tradire ciò che porta nel nome.</p>
+
+  <div class="chapter">
+    <span class="eyebrow">Il principio</span>
+    <h2>I muli, il grano, la strada</h2>
+    <p>Nei primi anni del Novecento il bisnonno non aveva business plan né mercati: aveva la strada e i muli. Commerciava tra carbone e grano, in un'epoca in cui si diventava adulti prima ancora di poter essere ragazzi. Sosteneva la famiglia quando la vita non lasciava alternative.</p>
+    <p>Da lì non nasce un business, ma una direzione. E una lezione tramandata come un'eredità invisibile:</p>
+    <p class="pull">«Ciò che ti identifica è ciò che fai, non chi dici di essere.»</p>
+  </div>
+
+  <div class="chapter">
+    <span class="eyebrow">La trasformazione</span>
+    <h2>La terra, il mulino, la precisione</h2>
+    <p>Con il nonno il grano smette di essere solo trasportato: viene trasformato. Nascono i mulini, e con loro un'ossessione nuova — la precisione, l'igiene, l'ordine assoluto delle cose. Mai un chicco fuori posto. Mai uno spreco. Mai un "abbastanza".</p>
+    <p>Non era perfezionismo: era rispetto. Perché chi lavora con il cibo lavora con la fiducia delle persone.</p>
+    <p class="pull">«Il cliente non doveva essere soddisfatto. Doveva essere sicuro.»</p>
+  </div>
+
+  <div class="chapter">
+    <span class="eyebrow">La parola data</span>
+    <h2>La qualità senza compromessi</h2>
+    <p>Poi arriva il padre, e la tradizione diventa responsabilità totale. La parola data vale più di qualsiasi contratto. La distanza non è una scusa: se un cliente ha bisogno, si parte — anche cento chilometri, anche per due confezioni. Mentre il mondo corre verso la quantità, lui sceglie la qualità. Sempre.</p>
+    <p class="pull">«Voglio dare da mangiare agli altri solo quello che mangerei io.»</p>
+  </div>
+
+  <div class="chapter">
+    <span class="eyebrow">Oggi</span>
+    <h2>La nuova generazione, la stessa direzione</h2>
+    <p>Oggi c'è la quarta generazione. Non come un inizio, ma come continuità. Portare Fedele oltre il territorio — in tutta Italia e oltre — non significa cambiare identità: significa darle lo spazio che merita. Meritocrazia, crescita, rispetto per ciò che è stato costruito con sacrificio per più di un secolo.</p>
+  </div>
+
+  <div class="chapter">
+    <span class="eyebrow">L'essenza</span>
+    <h2>Il lavoro che inizia quando il mondo dorme</h2>
+    <p>La vera essenza di Fedele non si vede nei bilanci: si vive nelle notti. La giornata inizia alle 23. Si scende nei forni, le impastatrici girano, l'acqua e la farina diventano qualcosa che respira. Ore dopo, quel rumore diventa profumo: il pane appena sfornato.</p>
+    <p>E mentre si preparano le consegne, ogni notte si chiude con una firma invisibile:</p>
+    <p class="pull">«Anche oggi, ragazzi, abbiamo portato in alto il nome della nostra azienda.»</p>
+    <p>Non è una frase di fine turno. È una conferma di identità. Una promessa che si ripete da più di un secolo: fare le cose bene, anche quando nessuno sta guardando.</p>
+  </div>
+
+  <div class="s-cta">
+    <h3>Porta la nostra Calabria sulla tua tavola.</h3>
+    <div class="row">
+      <a href="shop.html" class="btn btn--primary">Vai al negozio</a>
+      <a href="index.html" class="btn btn--ghost">Torna alla home</a>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="wrap">© <span id="y">2026</span> Azienda Fedele · FEDELE S.R.L.S.U. · Sant'Eufemia d'Aspromonte (RC) · <a href="index.html#contatti">Contatti</a></div>
+</footer>
+<script>var y=document.getElementById("y"); if(y) y.textContent=new Date().getFullYear();</script>
+</body>
+</html>

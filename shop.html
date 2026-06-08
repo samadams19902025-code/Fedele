@@ -412,8 +412,8 @@ body.promo-hidden .promo{display:none;}
 .mbar{display:none;}
 
 /* ============ TOAST ============ */
-.toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(120%); background:var(--brown); color:var(--cream); padding:14px 22px; border-radius:var(--r-pill); font-weight:600; font-size:.92rem; box-shadow:var(--shadow-lg); z-index:120; display:flex; align-items:center; gap:10px; transition:transform .35s cubic-bezier(.34,1.56,.64,1); max-width:90vw;}
-.toast.show{transform:translateX(-50%) translateY(0);}
+.toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(120%); background:var(--brown); color:var(--cream); padding:14px 22px; border-radius:var(--r-pill); font-weight:600; font-size:.92rem; box-shadow:var(--shadow-lg); z-index:120; display:flex; align-items:center; gap:10px; transition:transform .35s cubic-bezier(.34,1.56,.64,1), opacity .25s, visibility .25s; max-width:90vw; opacity:0; visibility:hidden; pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0); opacity:1; visibility:visible;}
 .toast svg{width:18px;height:18px; color:var(--grano-soft);}
 
 /* ============ MOBILE NAV ============ */
@@ -565,6 +565,7 @@ body.promo-hidden .promo{display:none;}
     <a href="#cat-pasta">Pasta</a>
     <a href="#cat-dolci">Dolci</a>
     <a href="#cat-specialita">Specialità</a>
+    <a href="#cat-altri">Altri prodotti</a>
   </div>
 </nav>
 
@@ -689,9 +690,9 @@ body.promo-hidden .promo{display:none;}
       </a>
       <!-- TODO: verify · confermare che il numero sia attivo su WhatsApp -->
       <div class="contact__social">
-        <!-- TODO: verify · inserire link reali Instagram / Facebook quando disponibili -->
-        <a href="#" aria-label="Instagram (link da confermare)" title="{{Instagram — link da confermare}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="Facebook (link da confermare)" title="{{Facebook — link da confermare}}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.1H7.5V14h2.2v8z"/></svg></a>
+        <!-- TODO: inserire link reali Instagram / Facebook quando disponibili -->
+        <a href="#" aria-label="Instagram (presto)" title="Instagram — presto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook (presto)" title="Facebook — presto"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.1H7.5V14h2.2v8z"/></svg></a>
       </div>
     </div>
   </div>
@@ -904,48 +905,69 @@ body.promo-hidden .promo{display:none;}
 /* ============ DATA — prezzi SOLO display (i prezzi veri stanno nella funzione serverless) ============ */
 /* I prezzi qui sotto sono INDICATIVI (dichiarati dal cliente) e in centesimi. Da confermare prima del LIVE. */
 const PRODUCTS = [
-  // FRISELLE & FRIABILI
-  {id:"friselle-peperoncino", cat:"friselle", name:"Friselle Peperoncino", weight:"400g", novita:true, price:450, desc:"Peperoncino a foglia larga; ottime con olio e pomodorini."},
-  {id:"friselle-bianche", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:390, desc:"Con olio e pomodorini o inumidite; lunga conservazione."},
-  {id:"friselle-integrali", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:420, desc:"Grano integrale 100% italiano; per una dieta bilanciata."},
-  {id:"friselle-finocchio", cat:"friselle", name:"Friselle Finocchio", weight:"400g", price:420, desc:"Profumate con semi di finocchio."},
-  {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"320g", novita:true, price:450, desc:"5 cereali, da gustare senza bagnare."},
-  {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"320g", price:390, desc:"Non bagnare: mantiene tutta la friabilità."},
-  {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"320g", price:420, desc:"Farina integrale 100% italiana."},
-  {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"320g", price:420, desc:"Farina di mais 100% italiana, leggere."},
-  // PASTA
-  {id:"fileja-casa", cat:"pasta", name:"Fileja 'i Casa", weight:"500g", price:490, desc:"La tipica calabrese, 12 min, versatile."},
-  {id:"fileja-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"500g", price:550, desc:"Piccante non eccessivo, ben bilanciata."},
-  {id:"fileja-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"500g", novita:true, price:590, desc:"Con peperoncino e spinaci."},
-  {id:"fileja-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"500g", price:650, desc:"Profumata al bergamotto di Calabria."},
-  {id:"fileja-nero-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"500g", price:690, desc:"Pronta subito, dal gusto deciso."},
-  {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"500g", price:490, desc:"12 min; perfette con ragù o cime di rapa."},
-  {id:"paccheri", cat:"pasta", name:"Paccheri", weight:"500g", price:490, desc:"12 min, versatili per ogni sugo."},
-  {id:"paglia-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"500g", price:550, desc:"Con spinaci, colore e gusto."},
-  {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"500g", price:490, desc:"Solo 5 minuti di cottura."},
-  {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"500g", price:550, desc:"Semola dura integrale; ottima col pesce stocco."},
-  {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"500g", price:490, desc:"Variante piccola della fileja, 12 min."},
-  {id:"tagliatelle", cat:"pasta", name:"Tagliatelle", weight:"500g", price:490, desc:"Lunghe e a nido, 12 min."},
-  {id:"tagliolini-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"500g", price:650, desc:"Solo 5 minuti di cottura."},
-  // DOLCI
-  {id:"baba-rum", cat:"dolci", name:"Babà al Rum", weight:"350g", price:790, desc:"Morbido, immerso nel rum."},
-  {id:"biscotti-miele", cat:"dolci", name:"Biscotti al Miele", weight:"300g", price:650, desc:"Con mandorle e miele."},
-  {id:"golosi-limone", cat:"dolci", name:"Golosi al Limone", weight:"280g", price:690, desc:"Crema al limone, senza zuccheri aggiunti."},
-  {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"300g", price:650, desc:"Tipici delle feste, forme a \u201cS\u201d e a pesce."},
-  {id:"nacatole-anice", cat:"dolci", name:"Nacatole Anice", weight:"270g", price:650, desc:"Artigianali, all'anice."},
-  {id:"nacatole-bergamotto", cat:"dolci", name:"Nacatole Bergamotto", weight:"270g", price:690, desc:"Profumate al bergamotto."},
-  {id:"nacatole-limone", cat:"dolci", name:"Nacatole Limone", weight:"270g", price:650, desc:"Profumate al limone."},
-  {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"220g", price:650, desc:"Al sesamo, pochi zuccheri."},
-  {id:"susumelle-nere", cat:"dolci", name:"Susumelle Nere", weight:"300g", price:750, desc:"Copertura al cacao."},
-  // SPECIALITÀ
-  {id:"nduja", cat:"specialita", name:"N'duja di Spilinga", weight:"210g", price:790, desc:"Suino, sale e peperoncino calabrese, senza conservanti; per pasta, pane e friselle."}
+  {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"", price:240, desc:"Prodotto che può essere mangiato appena aperta la confezione con un filo d’olio e pomodorini", img:"friabili-bianche.png"},
+  {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"", price:240, desc:"Prodotto che può essere mangiato appena aperta la confezione con un filo d’olio e pomodorini", img:"friabili-integrali.png"},
+  {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"", price:240, desc:"Prodotto che può essere mangiato appena aperta la confezione con un filo d’olio e pomodorini", img:"friabili-mais.png"},
+  {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"", price:240, desc:"Con i suoi 5 diversi tipi di cereali, il nostro friabile multicereali è una novità che stiamo inserendo nel mercato", img:"friabili-multicereali.png"},
+  {id:"friselle-bianche-rotonde-400g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:220, desc:"Questo prodotto può essere gustato non appena aperta la confezione, con un filo d’olio e pomodorini", img:"friselle-bianche.png"},
+  {id:"friselle-bianche-rotonde-500g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"500g", price:240, desc:""},
+  {id:"friselle-bianche-rotonde-finocchio-400g", cat:"friselle", name:"Friselle Bianche Rotonde Finocchio", weight:"400g", price:220, desc:"Questo prodotto può essere mangiato appena aperta la confezione con un filo d’olio e pomodorini", img:"friselle-finocchio.png"},
+  {id:"friselle-bianche-rotonde-peperoncino-400g", cat:"friselle", name:"Friselle Bianche Rotonde Peperoncino", weight:"400g", price:220, desc:"È un prodotto che può essere mangiato appena aperta la confezione con un filo d’olio e pomodorini", img:"friselle-peperoncino.png"},
+  {id:"friselle-integrali-rotonde-400g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:220, desc:"Questo prodotto è adatto a coloro che seguono una dieta bilanciata", img:"friselle-integrali.png"},
+  {id:"friselle-integrali-rotonde-500g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"500g", price:240, desc:""},
+  {id:"friselle-integrali-rotonde-finocchio-500g", cat:"friselle", name:"Friselle Integrali Rotonde Finocchio", weight:"500g", price:240, desc:""},
+  {id:"friselle-integrali-rotonde-peperoncino-500g", cat:"friselle", name:"Friselle Integrali Rotonde Peperoncino", weight:"500g", price:240, desc:""},
+  {id:"conchiglioni", cat:"pasta", name:"Conchiglioni", weight:"", price:220, desc:"Con circa 12–14 minuti di cottura, i conchiglioni sono uno dei formati più amati della tradizione italiana, pensati per…"},
+  {id:"fileja-ai-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"", price:240, desc:"Novità di prodotto con tre gusti differenti misti in un unico piatto", img:"fileja-tre-sapori.png"},
+  {id:"fileja-al-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"", price:240, desc:"Novità di prodotto tipicamente calabrese adatta agli amanti del bergamotto che vogliono cimentarsi in nuove avventure cu…", img:"fileja-bergamotto.png"},
+  {id:"fileja-al-nero-di-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"", price:240, desc:"Nuovo prodotto per gli amanti del nero di seppia", img:"fileja-nero-seppia.png"},
+  {id:"fileja-al-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"", price:240, desc:"Con i suoi 12 minuti di cottura, la fileja al peperoncino è un altro dei tanti altri piatti tipici calabresi", img:"fileja-peperoncino.png"},
+  {id:"fileja-al-pistacchio", cat:"pasta", name:"Fileja al Pistacchio", weight:"", price:240, desc:"Con circa 12 minuti di cottura, la fileja al pistacchio porta in tavola tutta la tradizione calabrese reinterpretata in…"},
+  {id:"fileja-alla-cipolla", cat:"pasta", name:"Fileja alla Cipolla", weight:"", price:240, desc:"Con circa 12 minuti di cottura, la fileja alla cipolla racconta tutta la semplicità autentica della tradizione calabrese…"},
+  {id:"fileja-i-casa", cat:"pasta", name:"Fileja i casa", weight:"", price:220, desc:"Con i suoi 12 minuti di cottura, la fileja è un tipo di pasta tipicamente calabrese", img:"fileja-casa.png"},
+  {id:"lasagnette", cat:"pasta", name:"Lasagnette", weight:"", price:220, desc:"Con circa 10–12 minuti di cottura, le lasagnette rappresentano una versione elegante e moderna della tradizione italiana…"},
+  {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"", price:220, desc:"Con i suoi 12 minuti di cottura, le orecchiette sono un tipo di pasta tipicamente calabrese", img:"orecchiette.png"},
+  {id:"paccheri-rigati", cat:"pasta", name:"Paccheri Rigati", weight:"", price:220, desc:"", img:"paccheri.png"},
+  {id:"paccheri-grandi", cat:"pasta", name:"Paccheri grandi", weight:"", price:220, desc:"", img:"paccheri.png"},
+  {id:"paglia-e-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"", price:240, desc:"", img:"paglia-fieno.png"},
+  {id:"penne-rigate", cat:"pasta", name:"Penne Rigate", weight:"", price:220, desc:""},
+  {id:"sedani-rigati", cat:"pasta", name:"Sedani Rigati", weight:"", price:220, desc:""},
+  {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"", price:220, desc:"Con i suoi soli 5 minuti di cottura, le spaccatelle rappresentano una scelta pratica e versatile, perfetta per chi cerca…", img:"spaccatelle.png"},
+  {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"", price:270, desc:"Con circa 12 minuti di cottura, la stroncatura è uno dei formati più identitari della tradizione calabrese, riconoscibil…", img:"stroncatura.png"},
+  {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"", price:220, desc:"Con circa 10–12 minuti di cottura, gli strozzapreti sono un formato tipico della tradizione italiana dal carattere rusti…", img:"strozzapreti.png"},
+  {id:"tagliatelle-lunghe", cat:"pasta", name:"Tagliatelle Lunghe", weight:"", price:220, desc:"Con circa 8–10 minuti di cottura, le tagliatelle lunghe sono uno dei formati più iconici della tradizione italiana, simb…", img:"tagliatelle.png"},
+  {id:"tagliatelle-a-nido", cat:"pasta", name:"Tagliatelle a Nido", weight:"", price:220, desc:"Con circa 8–10 minuti di cottura, le tagliatelle a nido racchiudono tutta l’eleganza della tradizione italiana in un for…", img:"tagliatelle.png"},
+  {id:"tagliatelle-ai-funghi-porcini", cat:"pasta", name:"Tagliatelle ai funghi porcini", weight:"", price:240, desc:"Con circa 8-10 minuti di cottura, le tagliatelle ai funghi porcini portano in tavola il sapore autentico della tradizion…", img:"tagliatelle.png"},
+  {id:"tagliolini", cat:"pasta", name:"Tagliolini", weight:"", price:220, desc:"Con circa 5 minuti di cottura, i tagliolini sono un grande classico della tradizione italiana, apprezzati per la loro el…"},
+  {id:"tagliolini-al-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"", price:240, desc:"Con circa 5 minuti di cottura, i tagliolini al bergamotto sono un formato elegante e profumato, che unisce la tradizione…", img:"tagliolini-bergamotto.png"},
+  {id:"tagliolini-al-nero-di-seppia", cat:"pasta", name:"Tagliolini al Nero di Seppia", weight:"", price:240, desc:"Con circa 5 minuti di cottura, i tagliolini al nero di seppia sono un formato ispirato alla tradizione marinara italiana…"},
+  {id:"trofie", cat:"pasta", name:"Trofie", weight:"", price:220, desc:"Con circa 10–12 minuti di cottura, le trofie sono nate da una lavorazione semplice che dà vita a una pasta dal carattere…"},
+  {id:"bab-al-rum", cat:"dolci", name:"Babà al Rum", weight:"", price:395, desc:"Il babà al rum è uno dei grandi classici della tradizione dolciaria, amato per la sua consistenza soffice"},
+  {id:"biscotti-al-miele", cat:"dolci", name:"Biscotti al Miele", weight:"", price:290, desc:"I biscotti al miele sono dolci dal gusto delicato e genuino, preparati con ingredienti semplici che ne esaltano la natur…", img:"biscotti-miele.png"},
+  {id:"cantuccini-al-bergamotto", cat:"dolci", name:"Cantuccini al Bergamotto", weight:"", price:290, desc:"I cantuccini al bergamotto reinterpretano un grande classico della tradizione con un tocco tipicamente calabrese, grazie…"},
+  {id:"golosi-al-limone", cat:"dolci", name:"Golosi al Limone", weight:"", price:390, desc:"I golosi al limone sono dolci soffici dal cuore cremoso, pensati per chi ama un gusto fresco e delicato ma al tempo stes…", img:"golosi-limone.png"},
+  {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"", price:290, desc:"I mostaccioli sono un dolce tradizionale legato alle festività, apprezzato per la loro semplicità e per le forme caratte…", img:"mostaccioli.png"},
+  {id:"nacatole-al-bergamotto", cat:"dolci", name:"Nacatole al Bergamotto", weight:"", price:395, desc:"Le nacatole al bergamotto sono un dolce tradizionale calabrese realizzato con lavorazione artigianale secondo metodi sto…", img:"nacatole-bergamotto.png"},
+  {id:"nacatole-al-limone", cat:"dolci", name:"Nacatole al Limone", weight:"", price:395, desc:"Le nacatole al limone sono un dolce tradizionale calabrese lavorato artigianalmente secondo tecniche storiche, che prese…", img:"nacatole-limone.png"},
+  {id:"nacatole-all-anice", cat:"dolci", name:"Nacatole all'Anice", weight:"", price:395, desc:"Le nacatole all’anice sono un dolce tradizionale calabrese, preparato secondo lavorazioni artigianali che richiamano tec…", img:"nacatole-anice.png"},
+  {id:"piparelle-alle-mandorle", cat:"dolci", name:"Piparelle alle Mandorle", weight:"", price:320, desc:"Le piparelle alle mandorle sono un dolce della tradizione dal carattere rustico e autentico"},
+  {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"", price:290, desc:"I sesamini sono biscotti semplici e fragranti, caratterizzati dal gusto intenso e tostato dei semi di sesamo che li rend…", img:"sesamini.png"},
+  {id:"stomatico-250g", cat:"dolci", name:"Stomatico", weight:"250g", price:350, desc:"Lo stomatico è un dolce tradizionale preparato con ingredienti che richiamano la pasticceria rustica di una volta"},
+  {id:"stomatico-500g", cat:"dolci", name:"Stomatico", weight:"500g", price:550, desc:"Lo stomatico è un dolce tradizionale preparato con ingredienti che richiamano la pasticceria rustica di una volta"},
+  {id:"susumelle-nere", cat:"dolci", name:"Susumelle Nere", weight:"", price:290, desc:"NGREDIENTI: farina di grano tipo 0, acqua, latte, uova, zucchero, miele, copertura al cacao", img:"susumelle-nere.png"},
+  {id:"n-duja", cat:"specialita", name:"N'Duja", weight:"", price:550, desc:"La ’nduja in vasetto è una specialità autentica della tradizione calabrese, cremosa e dal carattere deciso", img:"nduja.png"},
+  {id:"bevanda-regenera", cat:"altri", name:"Bevanda Regenera", weight:"", price:195, desc:""},
+  {id:"bombole-grande", cat:"altri", name:"Bombole Grande", weight:"", price:3500, desc:""},
+  {id:"bombole-piccole", cat:"altri", name:"Bombole Piccole", weight:"", price:2500, desc:""},
+  {id:"olio", cat:"altri", name:"Olio", weight:"", price:1300, desc:""},
 ];
 
 const CATEGORIES = [
   {id:"friselle", anchor:"cat-friselle", title:"Friselle & Friabili", note:"Per la dispensa, lunga conservazione"},
   {id:"pasta", anchor:"cat-pasta", title:"Pasta", note:"Semola 100% italiana"},
   {id:"dolci", anchor:"cat-dolci", title:"Dolci", note:"Le ricette delle feste"},
-  {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"}
+  {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"},
+  {id:"altri", anchor:"cat-altri", title:"Altri prodotti", note:"Olio, bevande e bombole gas"}
 ];
 
 /* ============ CONFIG (demo front-end · nessuna chiamata di rete) ============ */
@@ -983,7 +1005,7 @@ function renderCatalog(){
       <article class="card">
         <div class="card__media">
           ${p.novita?'<span class="card__badge">Novità</span>':''}
-          <img class="prod-img" src="assets/${p.id}.png" alt="${p.name}" loading="lazy">
+          ${p.img ? `<img class="prod-img" src="assets/${p.img}" alt="${p.name}" loading="lazy">` : phHtml(p)}
         </div>
         <div class="card__body">
           <h4 class="card__name">${p.name}</h4>
@@ -1050,7 +1072,7 @@ function renderCart(){
     body.innerHTML = ids.map(id=>{
       const p = byId(id), q = cart[id];
       return `<div class="line">
-        <div class="line__media"><img class="prod-img" src="assets/${p.id}.png" alt="${p.name}" loading="lazy"></div>
+        <div class="line__media">${p.img ? `<img class="prod-img" src="assets/${p.img}" alt="${p.name}" loading="lazy">` : phHtml(p)}</div>
         <div>
           <div class="line__name">${p.name}</div>
           <div class="line__meta">${p.weight} · ${fmt(p.price)} cad.</div>
