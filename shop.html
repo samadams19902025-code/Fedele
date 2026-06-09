@@ -453,6 +453,9 @@ body.promo-hidden .promo{display:none;}
   .ship__steps{grid-template-columns:1fr;}
   .card__body{padding:14px 14px 16px;}
   .card__name{font-size:1.05rem;}
+  .qtyrow{flex-direction:column; align-items:stretch; gap:8px;}
+  .stepper{width:100%; justify-content:space-between;}
+  .stepper input{flex:1; width:auto;}
   body{padding-bottom:64px;}
   .wa-float{bottom:80px; width:54px;height:54px;}
   .wa-float svg{width:28px;height:28px;}
@@ -905,61 +908,58 @@ body.promo-hidden .promo{display:none;}
 /* ============ DATA — prezzi SOLO display (i prezzi veri stanno nella funzione serverless) ============ */
 /* I prezzi qui sotto sono INDICATIVI (dichiarati dal cliente) e in centesimi. Da confermare prima del LIVE. */
 const PRODUCTS = [
-  {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"", price:240, desc:"Croccanti e leggere, da sgranocchiare appena aperte.", img:"friabili-bianche.png"},
+  {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"", price:240, desc:"Croccanti e leggere, da sgranocchiare appena aperte."},
   {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"", price:240, desc:"La versione integrale: più rustica, stessa fragranza.", img:"friabili-integrali.jpg"},
-  {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"", price:240, desc:"Mais 100% italiano, dorate e dal gusto dolce.", img:"friabili-mais.png"},
+  {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"", price:240, desc:"Mais 100% italiano, dorate e dal gusto dolce."},
   {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"", price:240, desc:"Cinque cereali in un morso: croccanti, la nostra novità.", img:"friabili-multicereali.jpg"},
-  {id:"friselle-bianche-rotonde-400g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:220, desc:"La classica da bagnare: olio, pomodorini ed è subito estate.", img:"friselle-bianche.png"},
+  {id:"friselle-bianche-rotonde-400g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:220, desc:"La classica da bagnare: olio, pomodorini ed è subito estate."},
   {id:"friselle-bianche-rotonde-500g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"500g", price:240, desc:"La classica nel formato famiglia, sempre pronta in dispensa."},
-  {id:"friselle-bianche-rotonde-finocchio-400g", cat:"friselle", name:"Friselle Bianche Rotonde Finocchio", weight:"400g", price:220, desc:"Con semi di finocchio: profumate e diverse dal solito.", img:"friselle-finocchio.png"},
-  {id:"friselle-bianche-rotonde-peperoncino-400g", cat:"friselle", name:"Friselle Bianche Rotonde Peperoncino", weight:"400g", price:220, desc:"Un tocco di peperoncino calabrese che scalda il morso.", img:"friselle-peperoncino.png"},
+  {id:"friselle-bianche-rotonde-finocchio-400g", cat:"friselle", name:"Friselle Bianche Rotonde Finocchio", weight:"400g", price:220, desc:"Con semi di finocchio: profumate e diverse dal solito."},
+  {id:"friselle-bianche-rotonde-peperoncino-400g", cat:"friselle", name:"Friselle Bianche Rotonde Peperoncino", weight:"400g", price:220, desc:"Un tocco di peperoncino calabrese che scalda il morso."},
   {id:"friselle-integrali-rotonde-400g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:220, desc:"Integrali e rustiche, più leggere e saporite.", img:"friselle-integrali.jpg"},
   {id:"friselle-integrali-rotonde-500g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"500g", price:240, desc:"Integrali, formato famiglia: da tenere sempre in dispensa.", img:"friselle-integrali.jpg"},
   {id:"friselle-integrali-rotonde-finocchio-500g", cat:"friselle", name:"Friselle Integrali Rotonde Finocchio", weight:"500g", price:240, desc:"Integrali al finocchietto, formato famiglia."},
   {id:"friselle-integrali-rotonde-peperoncino-500g", cat:"friselle", name:"Friselle Integrali Rotonde Peperoncino", weight:"500g", price:240, desc:"Integrali col pizzico di peperoncino, formato famiglia."},
   {id:"conchiglioni", cat:"pasta", name:"Conchiglioni", weight:"", price:220, desc:"Grandi conchiglie da farcire e gratinare al forno."},
-  {id:"fileja-ai-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"", price:240, desc:"Peperoncino e spinaci: tre gusti calabresi in un piatto.", img:"fileja-tre-sapori.png"},
+  {id:"fileja-ai-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"", price:240, desc:"Peperoncino e spinaci: tre gusti calabresi in un piatto."},
   {id:"fileja-al-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"", price:240, desc:"La fileja profumata al bergamotto di Calabria.", img:"fileja-bergamotto.jpg"},
   {id:"fileja-al-nero-di-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"", price:240, desc:"Fileja al nero di seppia, gusto deciso di mare.", img:"fileja-nero-seppia.jpg"},
   {id:"fileja-al-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"", price:240, desc:"La fileja col pizzico piccante che piace ai calabresi.", img:"fileja-peperoncino.jpg"},
   {id:"fileja-al-pistacchio", cat:"pasta", name:"Fileja al Pistacchio", weight:"", price:240, desc:"Fileja al pistacchio: delicata e profumata."},
   {id:"fileja-alla-cipolla", cat:"pasta", name:"Fileja alla Cipolla", weight:"", price:240, desc:"Fileja alla cipolla, dolce e saporita.", img:"fileja-cipolla.jpg"},
-  {id:"fileja-i-casa", cat:"pasta", name:"Fileja i casa", weight:"", price:220, desc:"La fileja di casa: l'attorcigliata simbolo della Calabria.", img:"fileja-casa.png"},
+  {id:"fileja-i-casa", cat:"pasta", name:"Fileja i casa", weight:"", price:220, desc:"La fileja di casa: l'attorcigliata simbolo della Calabria."},
   {id:"lasagnette", cat:"pasta", name:"Lasagnette", weight:"", price:220, desc:"Sfoglie da forno per lasagne ricche e filanti.", img:"lasagnette.jpg"},
-  {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"", price:220, desc:"Le orecchiette della tradizione: nate per cime di rapa e ragù.", img:"orecchiette.png"},
-  {id:"paccheri-rigati", cat:"pasta", name:"Paccheri Rigati", weight:"", price:220, desc:"Rigati per trattenere il sugo: al forno o con ragù.", img:"paccheri.png"},
-  {id:"paccheri-grandi", cat:"pasta", name:"Paccheri grandi", weight:"", price:220, desc:"Grandi e avvolgenti, da farcire o con sughi importanti.", img:"paccheri.png"},
-  {id:"paglia-e-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"", price:240, desc:"Nidi di semola e spinaci, due colori in tavola.", img:"paglia-fieno.png"},
+  {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"", price:220, desc:"Le orecchiette della tradizione: nate per cime di rapa e ragù."},
+  {id:"paccheri-rigati", cat:"pasta", name:"Paccheri Rigati", weight:"", price:220, desc:"Rigati per trattenere il sugo: al forno o con ragù."},
+  {id:"paccheri-grandi", cat:"pasta", name:"Paccheri grandi", weight:"", price:220, desc:"Grandi e avvolgenti, da farcire o con sughi importanti."},
+  {id:"paglia-e-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"", price:240, desc:"Nidi di semola e spinaci, due colori in tavola."},
   {id:"penne-rigate", cat:"pasta", name:"Penne Rigate", weight:"", price:220, desc:"Le rigate di tutti i giorni: prendono ogni condimento."},
   {id:"sedani-rigati", cat:"pasta", name:"Sedani Rigati", weight:"", price:220, desc:"Tubetti rigati, perfetti al forno e con sughi corposi."},
   {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"", price:220, desc:"Pronte in 5 minuti: la pasta dei giorni di corsa.", img:"spaccatelle.jpg"},
-  {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"", price:270, desc:"L'antico formato calabrese, ottimo col pesce stocco.", img:"stroncatura.png"},
+  {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"", price:270, desc:"L'antico formato calabrese, ottimo col pesce stocco."},
   {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"", price:220, desc:"Attorcigliati e rustici, tengono bene il sugo.", img:"strozzapreti.jpg"},
   {id:"tagliatelle-lunghe", cat:"pasta", name:"Tagliatelle Lunghe", weight:"", price:220, desc:"Tagliatelle lunghe, regine del ragù della domenica.", img:"tagliatelle-lunghe.jpg"},
-  {id:"tagliatelle-a-nido", cat:"pasta", name:"Tagliatelle a Nido", weight:"", price:220, desc:"A nido, comode e veloci: un classico della tavola.", img:"tagliatelle.png"},
-  {id:"tagliatelle-ai-funghi-porcini", cat:"pasta", name:"Tagliatelle ai funghi porcini", weight:"", price:240, desc:"Profumo di bosco già nella pasta: con funghi porcini.", img:"tagliatelle.png"},
+  {id:"tagliatelle-a-nido", cat:"pasta", name:"Tagliatelle a Nido", weight:"", price:220, desc:"A nido, comode e veloci: un classico della tavola."},
+  {id:"tagliatelle-ai-funghi-porcini", cat:"pasta", name:"Tagliatelle ai funghi porcini", weight:"", price:240, desc:"Profumo di bosco già nella pasta: con funghi porcini."},
   {id:"tagliolini", cat:"pasta", name:"Tagliolini", weight:"", price:220, desc:"Sottili e veloci: perfetti in brodo o al limone.", img:"tagliolini.jpg"},
   {id:"tagliolini-al-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"", price:240, desc:"Sottili e profumati al bergamotto, pronti in 5 minuti.", img:"tagliolini-bergamotto.jpg"},
   {id:"tagliolini-al-nero-di-seppia", cat:"pasta", name:"Tagliolini al Nero di Seppia", weight:"", price:240, desc:"Sottili al nero di seppia, eleganti per i primi di mare.", img:"tagliolini-nero-seppia.jpg"},
   {id:"trofie", cat:"pasta", name:"Trofie", weight:"", price:220, desc:"Piccole trofie attorcigliate, nate per il pesto."},
   {id:"bab-al-rum", cat:"dolci", name:"Babà al Rum", weight:"", price:395, desc:"Soffice e generosamente imbevuto nel rum.", img:"baba-rum.jpg"},
-  {id:"biscotti-al-miele", cat:"dolci", name:"Biscotti al Miele", weight:"", price:290, desc:"Morbidi, con mandorle e miele: genuini come una volta.", img:"biscotti-miele.png"},
+  {id:"biscotti-al-miele", cat:"dolci", name:"Biscotti al Miele", weight:"", price:290, desc:"Morbidi, con mandorle e miele: genuini come una volta."},
   {id:"cantuccini-al-bergamotto", cat:"dolci", name:"Cantuccini al Bergamotto", weight:"", price:290, desc:"I cantuccini reinventati col bergamotto di Calabria."},
-  {id:"golosi-al-limone", cat:"dolci", name:"Golosi al Limone", weight:"", price:390, desc:"Soffici col cuore cremoso al limone, senza zuccheri aggiunti.", img:"golosi-limone.png"},
-  {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"", price:290, desc:"Il dolce delle feste, nelle forme a S e a pesce.", img:"mostaccioli.png"},
+  {id:"golosi-al-limone", cat:"dolci", name:"Golosi al Limone", weight:"", price:390, desc:"Soffici col cuore cremoso al limone, senza zuccheri aggiunti."},
+  {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"", price:290, desc:"Il dolce delle feste, nelle forme a S e a pesce."},
   {id:"nacatole-al-bergamotto", cat:"dolci", name:"Nacatole al Bergamotto", weight:"", price:395, desc:"Dolci artigianali calabresi profumati al bergamotto.", img:"nacatole.jpg"},
   {id:"nacatole-al-limone", cat:"dolci", name:"Nacatole al Limone", weight:"", price:395, desc:"Le nacatole della tradizione, al profumo di limone.", img:"nacatole.jpg"},
   {id:"nacatole-all-anice", cat:"dolci", name:"Nacatole all'Anice", weight:"", price:395, desc:"Le nacatole di una volta, all'anice, fatte a mano.", img:"nacatole.jpg"},
   {id:"piparelle-alle-mandorle", cat:"dolci", name:"Piparelle alle Mandorle", weight:"", price:320, desc:"Croccanti fette alle mandorle, rustiche e fragranti."},
-  {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"", price:290, desc:"Fragranti e tostati, ricoperti di semi di sesamo.", img:"sesamini.png"},
+  {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"", price:290, desc:"Fragranti e tostati, ricoperti di semi di sesamo."},
   {id:"stomatico-250g", cat:"dolci", name:"Stomatico", weight:"250g", price:350, desc:"Dolce rustico della tradizione, formato piccolo."},
   {id:"stomatico-500g", cat:"dolci", name:"Stomatico", weight:"500g", price:550, desc:"Dolce rustico della tradizione, formato grande."},
-  {id:"susumelle-nere", cat:"dolci", name:"Susumelle Nere", weight:"", price:290, desc:"Morbide susumelle con copertura al cacao.", img:"susumelle-nere.png"},
-  {id:"n-duja", cat:"specialita", name:"N'Duja", weight:"", price:550, desc:"La 'nduja di Spilinga: cremosa, piccante, da spalmare ovunque.", img:"nduja.png"},
+  {id:"susumelle-nere", cat:"dolci", name:"Susumelle Nere", weight:"", price:290, desc:"Morbide susumelle con copertura al cacao."},
+  {id:"n-duja", cat:"specialita", name:"N'Duja", weight:"", price:550, desc:"La 'nduja di Spilinga: cremosa, piccante, da spalmare ovunque."},
   {id:"bevanda-regenera", cat:"altri", name:"Bevanda Regenera", weight:"", price:195, desc:"La nostra bevanda Regenera. (dettagli in arrivo)"},
-  {id:"bombole-grande", cat:"altri", name:"Bombole Grande", weight:"", price:3500, desc:"Bombola gas, formato grande. (dettagli in arrivo)"},
-  {id:"bombole-piccole", cat:"altri", name:"Bombole Piccole", weight:"", price:2500, desc:"Bombola gas, formato piccolo. (dettagli in arrivo)"},
-  {id:"olio", cat:"altri", name:"Olio", weight:"", price:1300, desc:"Olio della nostra terra calabrese. (dettagli in arrivo)"},,
   {id:"crostatine-cioccolato", cat:"dolci", name:"Crostatine al Cioccolato", weight:"", price:0, req:true, desc:"Crostatine friabili con cuore al cioccolato."},
   {id:"crostatine-marmellata", cat:"dolci", name:"Crostatine alla Marmellata", weight:"", price:0, req:true, desc:"Crostatine friabili con marmellata."},
   {id:"friabili-nduja", cat:"friselle", name:"Friabili N'Duja", weight:"", price:0, req:true, desc:"Friabili con un tocco di n'duja calabrese."}
@@ -970,7 +970,7 @@ const CATEGORIES = [
   {id:"pasta", anchor:"cat-pasta", title:"Pasta", note:"Semola 100% italiana"},
   {id:"dolci", anchor:"cat-dolci", title:"Dolci", note:"Le ricette delle feste"},
   {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"},
-  {id:"altri", anchor:"cat-altri", title:"Altri prodotti", note:"Olio, bevande e bombole gas"}
+  {id:"altri", anchor:"cat-altri", title:"Altri prodotti", note:"Le nostre bevande"}
 ];
 
 /* ============ CONFIG (demo front-end · nessuna chiamata di rete) ============ */
