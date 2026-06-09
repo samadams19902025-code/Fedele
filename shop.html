@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Azienda Fedele — Prodotti tipici calabresi spediti in tutta Italia · dal 1956</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23B23A22'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23F5EDDD' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E" />
 <meta name="description" content="Friselle, pasta artigianale, dolci e n'duja della tradizione calabrese. Grano 100% italiano, di famiglia dal 1956. Spedizione in tutta Italia, pagamenti sicuri." />
 <meta name="theme-color" content="#B23A22" />
 
@@ -191,13 +192,13 @@ body.promo-hidden .promo{display:none;}
 .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
 .card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .25s ease;}
 .card:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
-.card__media{position:relative; aspect-ratio:1/1;}
-.prod-img{width:100%;height:100%;object-fit:contain;background:#fbf7f0;display:block;}
+.card__media{position:relative; aspect-ratio:4/5; overflow:hidden;}
+.prod-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#fbf7f0;display:block;}
 .card__badge{position:absolute; top:10px; right:10px; z-index:3; background:var(--terracotta); color:#fff; font-size:.66rem; font-weight:700; letter-spacing:.1em; padding:5px 11px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
 .card__body{padding:18px 18px 20px; display:flex; flex-direction:column; flex:1;}
-.card__name{font-size:1.18rem; line-height:1.2;}
+.card__name{font-size:1.18rem; line-height:1.25; min-height:2.95rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
 .card__meta{font-size:.78rem; font-weight:600; letter-spacing:.04em; color:var(--grano); text-transform:uppercase; margin-top:6px;}
-.card__desc{font-size:.9rem; color:var(--brown-soft); margin-top:9px; flex:1; text-wrap:pretty;}
+.card__desc{font-size:.9rem; color:var(--brown-soft); margin-top:9px; flex:1; text-wrap:pretty; min-height:2.5rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
 .card__foot{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px;}
 .card__price{font-family:var(--serif); font-size:1.42rem; font-weight:600; color:var(--brown);}
 .card__price .ind{font-size:.62rem; font-family:var(--sans); color:var(--brown-faint); font-weight:600; vertical-align:super; margin-left:2px;}
@@ -526,7 +527,6 @@ body.promo-hidden .promo{display:none;}
         <a href="#prodotti" class="btn btn--primary btn--lg">Ordina ora</a>
         <a href="#storia" class="btn btn--ghost btn--lg">La nostra storia</a>
       </div>
-      <p class="hero__micro"><span class="spark">✦</span> <span class="todo">Offerta di lancio · per un periodo limitato</span> <!-- TODO: verify --></p>
       <div class="hero__facts">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9c0-2 1.5-4 7-4M19 9c0-2-1.5-4-7-4M5 9c0 5 3 8 7 8M19 9c0 5-3 8-7 8"/></svg> Dal 1956</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 5 5 .5-3.8 3.3L16.5 17 12 14.2 7.5 17l1.3-5.2L5 8.5 10 8z"/></svg> Grano 100% italiano</span>
@@ -704,11 +704,11 @@ body.promo-hidden .promo{display:none;}
   <div class="wrap footer__in">
     <div class="footer__legal">
       <span><strong style="color:var(--cream);font-family:var(--display);">Fedele</strong> — FEDELE S.R.L.S.U.</span>
-      <span>· P.IVA <span class="todo">{{P.IVA da confermare}}</span></span>
+      <span>· P.IVA <span class="todo">in aggiornamento</span></span>
       <!-- TODO: verify · inserire Partita IVA -->
     </div>
     <div class="footer__legal">
-      <a href="#" class="todo">Privacy &amp; Cookie {{da predisporre}}</a>
+      <a href="#" class="todo">Privacy &amp; Cookie</a>
       <!-- TODO: verify · predisporre pagine Privacy/Cookie -->
       <span>· © <span id="year"></span> · Sant'Eufemia d'Aspromonte (RC)</span>
     </div>
@@ -906,50 +906,50 @@ body.promo-hidden .promo{display:none;}
 /* I prezzi qui sotto sono INDICATIVI (dichiarati dal cliente) e in centesimi. Da confermare prima del LIVE. */
 const PRODUCTS = [
   {id:"friabili-bianche", cat:"friselle", name:"Friabili Bianche", weight:"", price:240, desc:"Croccanti e leggere, da sgranocchiare appena aperte.", img:"friabili-bianche.png"},
-  {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"", price:240, desc:"La versione integrale: più rustica, stessa fragranza.", img:"friabili-integrali.png"},
+  {id:"friabili-integrali", cat:"friselle", name:"Friabili Integrali", weight:"", price:240, desc:"La versione integrale: più rustica, stessa fragranza.", img:"friabili-integrali.jpg"},
   {id:"friabili-mais", cat:"friselle", name:"Friabili Mais", weight:"", price:240, desc:"Mais 100% italiano, dorate e dal gusto dolce.", img:"friabili-mais.png"},
-  {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"", price:240, desc:"Cinque cereali in un morso: croccanti, la nostra novità.", img:"friabili-multicereali.png"},
+  {id:"friabili-multicereali", cat:"friselle", name:"Friabili Multicereali", weight:"", price:240, desc:"Cinque cereali in un morso: croccanti, la nostra novità.", img:"friabili-multicereali.jpg"},
   {id:"friselle-bianche-rotonde-400g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"400g", price:220, desc:"La classica da bagnare: olio, pomodorini ed è subito estate.", img:"friselle-bianche.png"},
   {id:"friselle-bianche-rotonde-500g", cat:"friselle", name:"Friselle Bianche Rotonde", weight:"500g", price:240, desc:"La classica nel formato famiglia, sempre pronta in dispensa."},
   {id:"friselle-bianche-rotonde-finocchio-400g", cat:"friselle", name:"Friselle Bianche Rotonde Finocchio", weight:"400g", price:220, desc:"Con semi di finocchio: profumate e diverse dal solito.", img:"friselle-finocchio.png"},
   {id:"friselle-bianche-rotonde-peperoncino-400g", cat:"friselle", name:"Friselle Bianche Rotonde Peperoncino", weight:"400g", price:220, desc:"Un tocco di peperoncino calabrese che scalda il morso.", img:"friselle-peperoncino.png"},
-  {id:"friselle-integrali-rotonde-400g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:220, desc:"Integrali e rustiche, più leggere e saporite.", img:"friselle-integrali.png"},
-  {id:"friselle-integrali-rotonde-500g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"500g", price:240, desc:"Integrali, formato famiglia: da tenere sempre in dispensa."},
+  {id:"friselle-integrali-rotonde-400g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"400g", price:220, desc:"Integrali e rustiche, più leggere e saporite.", img:"friselle-integrali.jpg"},
+  {id:"friselle-integrali-rotonde-500g", cat:"friselle", name:"Friselle Integrali Rotonde", weight:"500g", price:240, desc:"Integrali, formato famiglia: da tenere sempre in dispensa.", img:"friselle-integrali.jpg"},
   {id:"friselle-integrali-rotonde-finocchio-500g", cat:"friselle", name:"Friselle Integrali Rotonde Finocchio", weight:"500g", price:240, desc:"Integrali al finocchietto, formato famiglia."},
   {id:"friselle-integrali-rotonde-peperoncino-500g", cat:"friselle", name:"Friselle Integrali Rotonde Peperoncino", weight:"500g", price:240, desc:"Integrali col pizzico di peperoncino, formato famiglia."},
   {id:"conchiglioni", cat:"pasta", name:"Conchiglioni", weight:"", price:220, desc:"Grandi conchiglie da farcire e gratinare al forno."},
   {id:"fileja-ai-tre-sapori", cat:"pasta", name:"Fileja ai Tre Sapori", weight:"", price:240, desc:"Peperoncino e spinaci: tre gusti calabresi in un piatto.", img:"fileja-tre-sapori.png"},
-  {id:"fileja-al-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"", price:240, desc:"La fileja profumata al bergamotto di Calabria.", img:"fileja-bergamotto.png"},
-  {id:"fileja-al-nero-di-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"", price:240, desc:"Fileja al nero di seppia, gusto deciso di mare.", img:"fileja-nero-seppia.png"},
-  {id:"fileja-al-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"", price:240, desc:"La fileja col pizzico piccante che piace ai calabresi.", img:"fileja-peperoncino.png"},
+  {id:"fileja-al-bergamotto", cat:"pasta", name:"Fileja al Bergamotto", weight:"", price:240, desc:"La fileja profumata al bergamotto di Calabria.", img:"fileja-bergamotto.jpg"},
+  {id:"fileja-al-nero-di-seppia", cat:"pasta", name:"Fileja al Nero di Seppia", weight:"", price:240, desc:"Fileja al nero di seppia, gusto deciso di mare.", img:"fileja-nero-seppia.jpg"},
+  {id:"fileja-al-peperoncino", cat:"pasta", name:"Fileja al Peperoncino", weight:"", price:240, desc:"La fileja col pizzico piccante che piace ai calabresi.", img:"fileja-peperoncino.jpg"},
   {id:"fileja-al-pistacchio", cat:"pasta", name:"Fileja al Pistacchio", weight:"", price:240, desc:"Fileja al pistacchio: delicata e profumata."},
-  {id:"fileja-alla-cipolla", cat:"pasta", name:"Fileja alla Cipolla", weight:"", price:240, desc:"Fileja alla cipolla, dolce e saporita."},
+  {id:"fileja-alla-cipolla", cat:"pasta", name:"Fileja alla Cipolla", weight:"", price:240, desc:"Fileja alla cipolla, dolce e saporita.", img:"fileja-cipolla.jpg"},
   {id:"fileja-i-casa", cat:"pasta", name:"Fileja i casa", weight:"", price:220, desc:"La fileja di casa: l'attorcigliata simbolo della Calabria.", img:"fileja-casa.png"},
-  {id:"lasagnette", cat:"pasta", name:"Lasagnette", weight:"", price:220, desc:"Sfoglie da forno per lasagne ricche e filanti."},
+  {id:"lasagnette", cat:"pasta", name:"Lasagnette", weight:"", price:220, desc:"Sfoglie da forno per lasagne ricche e filanti.", img:"lasagnette.jpg"},
   {id:"orecchiette", cat:"pasta", name:"Orecchiette", weight:"", price:220, desc:"Le orecchiette della tradizione: nate per cime di rapa e ragù.", img:"orecchiette.png"},
   {id:"paccheri-rigati", cat:"pasta", name:"Paccheri Rigati", weight:"", price:220, desc:"Rigati per trattenere il sugo: al forno o con ragù.", img:"paccheri.png"},
   {id:"paccheri-grandi", cat:"pasta", name:"Paccheri grandi", weight:"", price:220, desc:"Grandi e avvolgenti, da farcire o con sughi importanti.", img:"paccheri.png"},
   {id:"paglia-e-fieno", cat:"pasta", name:"Paglia e Fieno", weight:"", price:240, desc:"Nidi di semola e spinaci, due colori in tavola.", img:"paglia-fieno.png"},
   {id:"penne-rigate", cat:"pasta", name:"Penne Rigate", weight:"", price:220, desc:"Le rigate di tutti i giorni: prendono ogni condimento."},
   {id:"sedani-rigati", cat:"pasta", name:"Sedani Rigati", weight:"", price:220, desc:"Tubetti rigati, perfetti al forno e con sughi corposi."},
-  {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"", price:220, desc:"Pronte in 5 minuti: la pasta dei giorni di corsa.", img:"spaccatelle.png"},
+  {id:"spaccatelle", cat:"pasta", name:"Spaccatelle", weight:"", price:220, desc:"Pronte in 5 minuti: la pasta dei giorni di corsa.", img:"spaccatelle.jpg"},
   {id:"stroncatura", cat:"pasta", name:"Stroncatura", weight:"", price:270, desc:"L'antico formato calabrese, ottimo col pesce stocco.", img:"stroncatura.png"},
-  {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"", price:220, desc:"Attorcigliati e rustici, tengono bene il sugo.", img:"strozzapreti.png"},
-  {id:"tagliatelle-lunghe", cat:"pasta", name:"Tagliatelle Lunghe", weight:"", price:220, desc:"Tagliatelle lunghe, regine del ragù della domenica.", img:"tagliatelle.png"},
+  {id:"strozzapreti", cat:"pasta", name:"Strozzapreti", weight:"", price:220, desc:"Attorcigliati e rustici, tengono bene il sugo.", img:"strozzapreti.jpg"},
+  {id:"tagliatelle-lunghe", cat:"pasta", name:"Tagliatelle Lunghe", weight:"", price:220, desc:"Tagliatelle lunghe, regine del ragù della domenica.", img:"tagliatelle-lunghe.jpg"},
   {id:"tagliatelle-a-nido", cat:"pasta", name:"Tagliatelle a Nido", weight:"", price:220, desc:"A nido, comode e veloci: un classico della tavola.", img:"tagliatelle.png"},
   {id:"tagliatelle-ai-funghi-porcini", cat:"pasta", name:"Tagliatelle ai funghi porcini", weight:"", price:240, desc:"Profumo di bosco già nella pasta: con funghi porcini.", img:"tagliatelle.png"},
-  {id:"tagliolini", cat:"pasta", name:"Tagliolini", weight:"", price:220, desc:"Sottili e veloci: perfetti in brodo o al limone."},
-  {id:"tagliolini-al-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"", price:240, desc:"Sottili e profumati al bergamotto, pronti in 5 minuti.", img:"tagliolini-bergamotto.png"},
-  {id:"tagliolini-al-nero-di-seppia", cat:"pasta", name:"Tagliolini al Nero di Seppia", weight:"", price:240, desc:"Sottili al nero di seppia, eleganti per i primi di mare."},
+  {id:"tagliolini", cat:"pasta", name:"Tagliolini", weight:"", price:220, desc:"Sottili e veloci: perfetti in brodo o al limone.", img:"tagliolini.jpg"},
+  {id:"tagliolini-al-bergamotto", cat:"pasta", name:"Tagliolini al Bergamotto", weight:"", price:240, desc:"Sottili e profumati al bergamotto, pronti in 5 minuti.", img:"tagliolini-bergamotto.jpg"},
+  {id:"tagliolini-al-nero-di-seppia", cat:"pasta", name:"Tagliolini al Nero di Seppia", weight:"", price:240, desc:"Sottili al nero di seppia, eleganti per i primi di mare.", img:"tagliolini-nero-seppia.jpg"},
   {id:"trofie", cat:"pasta", name:"Trofie", weight:"", price:220, desc:"Piccole trofie attorcigliate, nate per il pesto."},
-  {id:"bab-al-rum", cat:"dolci", name:"Babà al Rum", weight:"", price:395, desc:"Soffice e generosamente imbevuto nel rum."},
+  {id:"bab-al-rum", cat:"dolci", name:"Babà al Rum", weight:"", price:395, desc:"Soffice e generosamente imbevuto nel rum.", img:"baba-rum.jpg"},
   {id:"biscotti-al-miele", cat:"dolci", name:"Biscotti al Miele", weight:"", price:290, desc:"Morbidi, con mandorle e miele: genuini come una volta.", img:"biscotti-miele.png"},
   {id:"cantuccini-al-bergamotto", cat:"dolci", name:"Cantuccini al Bergamotto", weight:"", price:290, desc:"I cantuccini reinventati col bergamotto di Calabria."},
   {id:"golosi-al-limone", cat:"dolci", name:"Golosi al Limone", weight:"", price:390, desc:"Soffici col cuore cremoso al limone, senza zuccheri aggiunti.", img:"golosi-limone.png"},
   {id:"mostaccioli", cat:"dolci", name:"Mostaccioli", weight:"", price:290, desc:"Il dolce delle feste, nelle forme a S e a pesce.", img:"mostaccioli.png"},
-  {id:"nacatole-al-bergamotto", cat:"dolci", name:"Nacatole al Bergamotto", weight:"", price:395, desc:"Dolci artigianali calabresi profumati al bergamotto.", img:"nacatole-bergamotto.png"},
-  {id:"nacatole-al-limone", cat:"dolci", name:"Nacatole al Limone", weight:"", price:395, desc:"Le nacatole della tradizione, al profumo di limone.", img:"nacatole-limone.png"},
-  {id:"nacatole-all-anice", cat:"dolci", name:"Nacatole all'Anice", weight:"", price:395, desc:"Le nacatole di una volta, all'anice, fatte a mano.", img:"nacatole-anice.png"},
+  {id:"nacatole-al-bergamotto", cat:"dolci", name:"Nacatole al Bergamotto", weight:"", price:395, desc:"Dolci artigianali calabresi profumati al bergamotto.", img:"nacatole.jpg"},
+  {id:"nacatole-al-limone", cat:"dolci", name:"Nacatole al Limone", weight:"", price:395, desc:"Le nacatole della tradizione, al profumo di limone.", img:"nacatole.jpg"},
+  {id:"nacatole-all-anice", cat:"dolci", name:"Nacatole all'Anice", weight:"", price:395, desc:"Le nacatole di una volta, all'anice, fatte a mano.", img:"nacatole.jpg"},
   {id:"piparelle-alle-mandorle", cat:"dolci", name:"Piparelle alle Mandorle", weight:"", price:320, desc:"Croccanti fette alle mandorle, rustiche e fragranti."},
   {id:"sesamini", cat:"dolci", name:"Sesamini", weight:"", price:290, desc:"Fragranti e tostati, ricoperti di semi di sesamo.", img:"sesamini.png"},
   {id:"stomatico-250g", cat:"dolci", name:"Stomatico", weight:"250g", price:350, desc:"Dolce rustico della tradizione, formato piccolo."},
@@ -959,7 +959,10 @@ const PRODUCTS = [
   {id:"bevanda-regenera", cat:"altri", name:"Bevanda Regenera", weight:"", price:195, desc:"La nostra bevanda Regenera. (dettagli in arrivo)"},
   {id:"bombole-grande", cat:"altri", name:"Bombole Grande", weight:"", price:3500, desc:"Bombola gas, formato grande. (dettagli in arrivo)"},
   {id:"bombole-piccole", cat:"altri", name:"Bombole Piccole", weight:"", price:2500, desc:"Bombola gas, formato piccolo. (dettagli in arrivo)"},
-  {id:"olio", cat:"altri", name:"Olio", weight:"", price:1300, desc:"Olio della nostra terra calabrese. (dettagli in arrivo)"},
+  {id:"olio", cat:"altri", name:"Olio", weight:"", price:1300, desc:"Olio della nostra terra calabrese. (dettagli in arrivo)"},,
+  {id:"crostatine-cioccolato", cat:"dolci", name:"Crostatine al Cioccolato", weight:"", price:0, req:true, desc:"Crostatine friabili con cuore al cioccolato."},
+  {id:"crostatine-marmellata", cat:"dolci", name:"Crostatine alla Marmellata", weight:"", price:0, req:true, desc:"Crostatine friabili con marmellata."},
+  {id:"friabili-nduja", cat:"friselle", name:"Friabili N'Duja", weight:"", price:0, req:true, desc:"Friabili con un tocco di n'duja calabrese."}
 ];
 
 const CATEGORIES = [
@@ -1012,9 +1015,9 @@ function renderCatalog(){
           <span class="card__meta">${p.weight}</span>
           <p class="card__desc">${p.desc}</p>
           <div class="card__foot">
-            <span class="card__price">${fmt(p.price)}<span class="ind" title="Prezzo indicativo, da confermare">ind.</span></span>
+            <span class="card__price">${p.req ? 'Prezzo su richiesta' : fmt(p.price)}</span>
           </div>
-          <div class="qtyrow">
+          ${p.req ? `<div class="qtyrow"><a class="add-btn" style="flex:1;text-decoration:none;background:#25D366" href="https://wa.me/393926686996?text=${encodeURIComponent('Ciao, vorrei info su: '+p.name)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg> Chiedi su WhatsApp</a></div>` : `<div class="qtyrow">
             <div class="stepper" role="group" aria-label="Quantità ${p.name}">
               <button type="button" aria-label="Diminuisci" data-step="-1" data-pid="${p.id}">−</button>
               <input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantità" id="qty-${p.id}" />
@@ -1024,7 +1027,7 @@ function renderCatalog(){
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
               Aggiungi
             </button>
-          </div>
+          </div>`}
         </div>
       </article>`).join("");
     return `<section class="catblock" id="${cat.anchor}" aria-labelledby="h-${cat.id}">
