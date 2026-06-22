@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8" />
@@ -87,14 +87,27 @@ body.promo-hidden .promo{display:none;}
   position:sticky; top:0; z-index:50;
   background:rgba(245,237,221,.86); backdrop-filter:saturate(1.4) blur(12px);
   border-bottom:1px solid var(--line);
+  transition:background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
 }
+.header--red{background:var(--terracotta) !important; backdrop-filter:none; border-bottom-color:transparent;}
+.header--red .brand__name{color:var(--cream);}
+.header--red .brand__name b{color:var(--cream);}
+.header--red .brand__tag{color:rgba(245,237,221,.72);}
+.header--red .nav a{color:var(--cream);}
+.header--red .nav a::after{background:var(--cream);}
+.header--red .btn--primary{background:var(--cream); color:var(--terracotta);}
+.header--red .cart-btn{border-color:rgba(245,237,221,.4); background:rgba(255,255,255,.12); color:var(--cream);}
+.header--red .cart-btn svg{color:var(--cream);}
+.header--red .cart-count{background:var(--cream); color:var(--terracotta); border-color:var(--terracotta);}
+.header--red .hamburger{border-color:rgba(245,237,221,.4); background:rgba(255,255,255,.12);}
+.header--red .hamburger svg{stroke:var(--cream);}
 .header__in{display:flex; align-items:center; gap:24px; min-height:var(--header-h);}
 .brand{display:flex; flex-direction:column; line-height:1; margin-right:auto;}
-.brand__name{font-family:var(--display); font-size:1.6rem; letter-spacing:.02em; color:var(--brown);}
-.brand__name b{color:var(--terracotta); font-weight:400;}
-.brand__tag{font-family:var(--sans); font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--brown-soft); margin-top:3px;}
+.brand__name{font-family:var(--display); font-size:1.6rem; letter-spacing:.02em; color:var(--brown); transition:color .4s;}
+.brand__name b{color:var(--terracotta); font-weight:400; transition:color .4s;}
+.brand__tag{font-family:var(--sans); font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--brown-soft); margin-top:3px; transition:color .4s;}
 .nav{display:flex; gap:28px;}
-.nav a{font-size:.92rem; font-weight:500; color:var(--brown); position:relative; padding:4px 0;}
+.nav a{font-size:.92rem; font-weight:500; color:var(--brown); position:relative; padding:4px 0; transition:color .4s;}
 .nav a::after{content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--terracotta); transition:right .25s ease;}
 .nav a:hover::after{right:0;}
 .header__actions{display:flex; align-items:center; gap:12px;}
@@ -110,7 +123,7 @@ body.promo-hidden .promo{display:none;}
 .btn--ghost:hover{border-color:var(--brown); background:rgba(55,37,24,.04);}
 .btn--lg{padding:16px 30px; font-size:1.02rem;}
 .btn--block{width:100%;}
-.cart-btn{position:relative; width:48px; height:48px; border-radius:50%; display:grid; place-items:center; border:1.5px solid var(--line-strong); background:var(--paper); transition:border-color .2s, background .2s;}
+.cart-btn{position:relative; width:48px; height:48px; border-radius:50%; display:grid; place-items:center; border:1.5px solid var(--line-strong); background:var(--paper); transition:border-color .4s, background .4s, color .4s;}
 .cart-btn:hover{border-color:var(--brown);}
 .cart-btn svg{width:22px;height:22px;}
 .cart-count{
@@ -120,7 +133,7 @@ body.promo-hidden .promo{display:none;}
   transform:scale(0); transition:transform .2s cubic-bezier(.34,1.56,.64,1);
 }
 .cart-count.show{transform:scale(1);}
-.hamburger{display:none; width:46px;height:46px; border-radius:10px; border:1.5px solid var(--line-strong); place-items:center; background:var(--paper);}
+.hamburger{display:none; width:46px;height:46px; border-radius:10px; border:1.5px solid var(--line-strong); place-items:center; background:var(--paper); transition:border-color .4s, background .4s;}
 .hamburger svg{width:24px;height:24px;}
 
 /* ============ HERO ============ */
@@ -455,7 +468,12 @@ body.promo-hidden .promo{display:none;}
   .card__name{font-size:1.05rem;}
   .qtyrow{flex-direction:column; align-items:stretch; gap:8px;}
   .stepper{width:100%; justify-content:space-between;}
-  .stepper input{flex:1; width:auto;}
+  .stepper input{flex:1; width:auto; min-width:28px;}
+  .stepper button{width:30px; height:36px; font-size:1rem;}
+  .add-btn{font-size:.82rem; padding:9px 10px; gap:5px;}
+  .add-btn svg{width:14px;height:14px;}
+  .catnav__in{scroll-snap-type:x mandatory;}
+  .catnav a{scroll-snap-align:start;}
   body{padding-bottom:64px;}
   .wa-float{bottom:80px; width:54px;height:54px;}
   .wa-float svg{width:28px;height:28px;}
@@ -466,10 +484,18 @@ body.promo-hidden .promo{display:none;}
   .mbar .mbar__count{position:absolute; top:5px; right:50%; margin-right:-26px; min-width:18px;height:18px; background:var(--terracotta); color:#fff; border-radius:50%; font-size:.66rem; display:grid; place-items:center; font-weight:700;}
 }
 @media (max-width:420px){
-  .grid{grid-template-columns:repeat(2,1fr); gap:12px;}
+  .grid{grid-template-columns:1fr; gap:12px; max-width:400px; margin:0 auto;}
   .hero h1{font-size:2.4rem;}
   .wrap{padding:0 16px;}
   .catnav__in{padding:12px 16px;}
+  .card{flex-direction:row; align-items:stretch;}
+  .card__media{width:120px; flex:none; aspect-ratio:auto; min-height:140px;}
+  .card__body{padding:12px 14px 14px; flex:1;}
+  .card__name{min-height:auto; -webkit-line-clamp:2;}
+  .card__desc{-webkit-line-clamp:2;}
+  .qtyrow{flex-direction:row; flex-wrap:wrap;}
+  .stepper{flex:1;}
+  .add-btn{flex:none; padding:10px 12px;}
 }
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
@@ -596,7 +622,6 @@ body.promo-hidden .promo{display:none;}
     <a href="#cat-pasta">Pasta</a>
     <a href="#cat-dolci">Dolci</a>
     <a href="#cat-specialita">Specialità</a>
-    <a href="#cat-altri">Altri prodotti</a>
   </div>
 </nav>
 
@@ -1015,8 +1040,7 @@ const CATEGORIES = [
   {id:"friselle", anchor:"cat-friselle", title:"Friselle & Friabili", note:"Per la dispensa, lunga conservazione"},
   {id:"pasta", anchor:"cat-pasta", title:"Pasta", note:"Semola 100% italiana"},
   {id:"dolci", anchor:"cat-dolci", title:"Dolci", note:"Le ricette delle feste"},
-  {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"},
-  {id:"altri", anchor:"cat-altri", title:"Altri prodotti", note:"Le nostre bevande"}
+  {id:"specialita", anchor:"cat-specialita", title:"Specialità", note:"Il gusto deciso della Calabria"}
 ];
 
 /* ============ CONFIG (demo front-end · nessuna chiamata di rete) ============ */
@@ -1352,6 +1376,15 @@ popupOv.addEventListener("click", e=>{ if(e.target===popupOv) closePopup(); });
 if(!sessionStorage.getItem(POPUP_KEY)){
   setTimeout(()=>{ openPopup(); try{sessionStorage.setItem(POPUP_KEY,"1");}catch(e){} }, 5000);
 }
+
+/* ============ HEADER SCROLL COLOR ============ */
+(()=>{
+  const hdr = document.querySelector('.header');
+  let ticking = false;
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){ requestAnimationFrame(()=>{ hdr.classList.toggle('header--red', window.scrollY > 80); ticking=false; }); ticking=true; }
+  }, {passive:true});
+})();
 
 /* ============ INIT ============ */
 renderCatalog();
