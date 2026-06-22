@@ -474,6 +474,34 @@ body.promo-hidden .promo{display:none;}
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
 }
+
+/* ============ PRODUCT MODAL ============ */
+.pmod-ov{position:fixed;inset:0;background:rgba(40,27,17,.6);backdrop-filter:blur(4px);z-index:105;display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+.pmod-ov.show{opacity:1;visibility:visible;}
+.pmod{background:var(--paper);border-radius:var(--r-lg);width:min(780px,100%);max-height:90vh;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow-lg);transform:translateY(12px) scale(.97);transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+.pmod-ov.show .pmod{transform:none;}
+.pmod__media{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;}
+.pmod__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pmod__media .ph{position:absolute;inset:0;width:100%;height:100%;}
+.pmod__body{padding:32px 28px 28px;display:flex;flex-direction:column;overflow-y:auto;position:relative;}
+.pmod__close{position:absolute;top:14px;right:14px;z-index:5;width:38px;height:38px;border-radius:50%;background:rgba(55,37,24,.08);display:grid;place-items:center;transition:background .15s;border:none;}
+.pmod__close:hover{background:rgba(55,37,24,.16);}
+.pmod__close svg{width:20px;height:20px;}
+.pmod__cat{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:10px;}
+.pmod__name{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);line-height:1.15;margin-bottom:8px;}
+.pmod__weight{font-size:.82rem;color:var(--brown-faint);font-weight:600;margin-bottom:16px;min-height:1em;}
+.pmod__desc{font-size:1rem;color:var(--brown-soft);line-height:1.65;flex:1;margin-bottom:24px;}
+.pmod__price{font-family:var(--serif);font-size:1.8rem;font-weight:600;color:var(--brown);margin-bottom:20px;}
+.pmod__actions{display:flex;flex-direction:column;gap:10px;}
+.card__media{cursor:pointer;}
+.card__media img,.card__media .ph{transition:opacity .2s;}
+.card__media:hover img,.card__media:hover .ph{opacity:.88;}
+@media(max-width:640px){
+  .pmod{grid-template-columns:1fr;max-height:92vh;overflow-y:auto;}
+  .pmod__media{aspect-ratio:4/3;position:relative;}
+  .pmod__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .pmod__body{padding:22px 20px 24px;}
+}
 </style>
 </head>
 <body>
@@ -717,6 +745,24 @@ body.promo-hidden .promo{display:none;}
     </div>
   </div>
 </footer>
+
+<!-- ============ PRODUCT MODAL ============ -->
+<div class="pmod-ov" id="pmodOv" role="dialog" aria-modal="true" aria-labelledby="pmodName" aria-hidden="true">
+  <div class="pmod" id="pmod">
+    <div class="pmod__media" id="pmodMedia"></div>
+    <div class="pmod__body">
+      <button class="pmod__close" id="pmodClose" aria-label="Chiudi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p class="pmod__cat" id="pmodCat"></p>
+      <h2 class="pmod__name" id="pmodName"></h2>
+      <p class="pmod__weight" id="pmodWeight"></p>
+      <p class="pmod__desc" id="pmodDesc"></p>
+      <p class="pmod__price" id="pmodPrice"></p>
+      <div class="pmod__actions" id="pmodActions"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ============ CART DRAWER ============ -->
 <div class="overlay" id="overlay"></div>
@@ -1003,9 +1049,9 @@ function saveCart(){ try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); 
 function renderCatalog(){
   const root = $("#catalog");
   root.innerHTML = CATEGORIES.map(cat=>{
-    const items = PRODUCTS.filter(p=>p.cat===cat.id);
+    const items = PRODUCTS.filter(p=>p.cat===cat.id && p.img);
     const cards = items.map(p=>`
-      <article class="card">
+      <article class="card" data-pid="${p.id}">
         <div class="card__media">
           ${p.novita?'<span class="card__badge">Novità</span>':''}
           ${p.img ? `<img class="prod-img" src="assets/${p.img}" alt="${p.name}" loading="lazy">` : phHtml(p)}
@@ -1177,6 +1223,12 @@ $("#coDoneBtn").addEventListener("click", ()=>{
 
 /* ============ EVENTS ============ */
 document.addEventListener("click", e=>{
+  const cardMedia = e.target.closest(".card__media");
+  if(cardMedia && !e.target.closest("[data-add],[data-step]")){
+    const card = cardMedia.closest("[data-pid]");
+    if(card) openProdModal(card.dataset.pid);
+    return;
+  }
   const add = e.target.closest("[data-add]");
   if(add){
     const id = add.dataset.add;
@@ -1224,7 +1276,57 @@ coOv.addEventListener("click", e=>{ if(e.target===coOv) closeCheckout(); });
 $("#discountApply").addEventListener("click", ()=>applyDiscount($("#discountInput").value, $("#discountStatus")));
 $("#coDiscountApply").addEventListener("click", ()=>{ if(applyDiscount($("#coDiscount").value, $("#coDiscountStatus"))){ const ds=$("#discountStatus"); ds.textContent="Codice applicato \u2713 \u221210% sul primo ordine."; ds.className="discount-status ok"; } });
 $("#discountInput").addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); applyDiscount($("#discountInput").value, $("#discountStatus")); } });
-document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeCheckout(); closeCart(); closePopup(); closeMenu(); }});
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeCheckout(); closeCart(); closePopup(); closeMenu(); closeProdModal(); }});
+
+/* ============ PRODUCT MODAL ============ */
+const pmodOv = $("#pmodOv");
+const CAT_LABELS = {friselle:"Friselle & Friabili",pasta:"Pasta",dolci:"Dolci",specialita:"Specialità",altri:"Altri prodotti"};
+
+function openProdModal(id){
+  const p = byId(id); if(!p) return;
+  $("#pmodCat").textContent = CAT_LABELS[p.cat] || p.cat;
+  $("#pmodName").textContent = p.name;
+  $("#pmodWeight").textContent = p.weight || "";
+  $("#pmodDesc").textContent = p.desc;
+  $("#pmodPrice").textContent = p.req ? "Prezzo su richiesta" : fmt(p.price);
+  const media = $("#pmodMedia");
+  media.innerHTML = p.img
+    ? `<img src="assets/${p.img}" alt="${p.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`
+    : phHtml(p, p.name);
+  const actions = $("#pmodActions");
+  if(p.req){
+    actions.innerHTML = `<a class="btn btn--primary btn--lg btn--block" style="background:#25D366;text-decoration:none;" href="https://wa.me/393926686996?text=${encodeURIComponent('Ciao, vorrei info su: '+p.name)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg> Chiedi su WhatsApp</a>`;
+  } else {
+    actions.innerHTML = `
+      <div class="stepper" role="group" aria-label="Quantità ${p.name}" style="justify-content:space-between;">
+        <button type="button" aria-label="Diminuisci" id="pmodMinus">−</button>
+        <input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantità" id="pmodQty" style="flex:1;width:auto;" />
+        <button type="button" aria-label="Aumenta" id="pmodPlus">+</button>
+      </div>
+      <button class="btn btn--primary btn--lg btn--block" id="pmodAdd">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Aggiungi al carrello
+      </button>`;
+    document.getElementById("pmodMinus").onclick = ()=>{ let v=parseInt(document.getElementById("pmodQty").value)||1; if(v>1) document.getElementById("pmodQty").value=v-1; };
+    document.getElementById("pmodPlus").onclick = ()=>{ let v=parseInt(document.getElementById("pmodQty").value)||1; document.getElementById("pmodQty").value=v+1; };
+    document.getElementById("pmodAdd").onclick = ()=>{
+      let qty=parseInt(document.getElementById("pmodQty").value)||1; if(qty<1)qty=1;
+      addToCart(id,qty);
+      toast(p.name+" aggiunto al carrello");
+      closeProdModal();
+    };
+  }
+  pmodOv.classList.add("show"); pmodOv.setAttribute("aria-hidden","false");
+  document.body.classList.add("no-scroll");
+}
+
+function closeProdModal(){
+  pmodOv.classList.remove("show"); pmodOv.setAttribute("aria-hidden","true");
+  document.body.classList.remove("no-scroll");
+}
+
+$("#pmodClose").addEventListener("click", closeProdModal);
+pmodOv.addEventListener("click", e=>{ if(e.target===pmodOv) closeProdModal(); });
 
 /* ============ MOBILE NAV ============ */
 const mobnav = $("#mobnav");
@@ -1259,3 +1361,4 @@ $("#year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
